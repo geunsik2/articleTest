@@ -1,0 +1,7 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Tue Feb 09 17:26:39 KST 2021
+jsr166e-1.0.jar>central=
+jsr166e-1.0.pom>central=
+jsr166e-1.0.pom>mvn2s=
+jsr166e-1.0.jar>mvn2s=
+jsr166e-1.0-sources.jar>mvn2s=

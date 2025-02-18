@@ -1,0 +1,11 @@
+#NOTE: This is an internal implementation file, its format can be changed without prior notice.
+#Fri May 09 10:38:01 KST 2014
+http\://maven.atlassian.com/repository/public/.lastUpdated=1357878936010
+http\://www.egovframe.go.kr/maven/.lastUpdated=1357878936094
+http\://repo.maven.apache.org/maven2/.lastUpdated=1399599481263
+http\://repository.jboss.com/maven2/.error=Could not transfer artifact net.sourceforge.ajaxtags\:ajaxtags\:pom\:1.5-beta-0.2 from/to jboss (http\://repository.jboss.com/maven2/)\: Access denied to http\://repository.jboss.com/maven2/net/sourceforge/ajaxtags/ajaxtags/1.5-beta-0.2/ajaxtags-1.5-beta-0.2.pom. Error code 403, Forbidden
+http\://repo.maven.apache.org/maven2/.error=
+default-http\://repository.jboss.com/maven2/.lastUpdated=1357878934336
+http\://repo1.maven.org/maven2/.lastUpdated=1357878932999
+http\://repo1.maven.org/maven2/.error=
+http\://maven.atlassian.com/repository/public/.error=

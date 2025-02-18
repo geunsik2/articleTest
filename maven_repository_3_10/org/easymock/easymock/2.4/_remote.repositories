@@ -1,0 +1,5 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Wed Mar 03 16:09:05 KST 2021
+easymock-2.4-sources.jar>mvn2s=
+easymock-2.4.jar>mvn2s=
+easymock-2.4.pom>mvn2s=

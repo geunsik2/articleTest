@@ -1,0 +1,11 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Wed Mar 03 16:52:47 KST 2021
+@default-mvn2-http\://repo1.maven.org/maven2/.lastUpdated=1614757960553
+http\://www.egovframe.go.kr/maven/.lastUpdated=1614757961322
+http\://www.egovframe.go.kr/maven/.error=
+http\://maven.egovframe.go.kr/maven/.lastUpdated=1614757960733
+http\://maven.egovframe.kr\:8080/maven/.error=
+http\://maven.egovframe.kr\:8080/maven/.lastUpdated=1614757960919
+https\://repo.maven.apache.org/maven2/.lastUpdated=1614757967847
+http\://repo1.maven.org/maven2/.error=Could not transfer artifact io.springfox\:springfox-schema\:jar\:2.9.2 from/to mvn2 (http\://repo1.maven.org/maven2/)\: Failed to transfer http\://repo1.maven.org/maven2/io/springfox/springfox-schema/2.9.2/springfox-schema-2.9.2.jar. Error code 501, HTTPS Required
+http\://maven.egovframe.go.kr/maven/.error=

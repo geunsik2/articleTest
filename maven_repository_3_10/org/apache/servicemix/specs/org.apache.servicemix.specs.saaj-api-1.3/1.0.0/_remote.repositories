@@ -1,0 +1,5 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Wed Mar 03 16:42:46 KST 2021
+org.apache.servicemix.specs.saaj-api-1.3-1.0.0.pom>mvn2s=
+org.apache.servicemix.specs.saaj-api-1.3-1.0.0-sources.jar>mvn2s=
+org.apache.servicemix.specs.saaj-api-1.3-1.0.0.jar>mvn2s=

@@ -1,0 +1,14 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Wed Mar 03 16:53:15 KST 2021
+https\://repo1.maven.org/maven2/.lastUpdated=1614755387433
+@default-mvn2-http\://repo1.maven.org/maven2/.lastUpdated=1614757995165
+http\://www.egovframe.go.kr/maven/.lastUpdated=1614755387594
+http\://www.egovframe.go.kr/maven/.error=
+http\://maven.egovframe.go.kr/maven/.lastUpdated=1614757351048
+http\://maven.egovframe.kr\:8080/maven/.error=
+http\://maven.egovframe.kr\:8080/maven/.lastUpdated=1614755387472
+https\://repo.maven.apache.org/maven2/.lastUpdated=1614755388192
+https\://repo.maven.apache.org/maven2/.error=
+http\://repo1.maven.org/maven2/.error=Could not transfer artifact net.sf.json-lib\:json-lib\:jar\:sources\:2.4 from/to mvn2 (http\://repo1.maven.org/maven2/)\: Failed to transfer http\://repo1.maven.org/maven2/net/sf/json-lib/json-lib/2.4/json-lib-2.4-sources.jar. Error code 501, HTTPS Required
+https\://repo1.maven.org/maven2/.error=
+http\://maven.egovframe.go.kr/maven/.error=

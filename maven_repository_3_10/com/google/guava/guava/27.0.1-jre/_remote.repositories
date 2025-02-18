@@ -1,0 +1,7 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Wed Mar 03 16:52:47 KST 2021
+guava-27.0.1-jre.pom>central=
+guava-27.0.1-jre-sources.jar>mvn2s=
+guava-27.0.1-jre.pom>mvn2s=
+guava-27.0.1-jre.jar>mvn2s=
+guava-27.0.1-jre.jar>central=

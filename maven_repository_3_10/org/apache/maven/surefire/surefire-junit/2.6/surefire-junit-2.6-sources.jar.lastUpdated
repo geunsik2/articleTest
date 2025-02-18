@@ -1,0 +1,9 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Tue Feb 09 17:26:54 KST 2021
+http\://repo1.maven.org/maven2/.error=Could not transfer artifact org.apache.maven.surefire\:surefire-junit\:jar\:sources\:2.6 from/to mvn2 (http\://repo1.maven.org/maven2/)\: Failed to transfer http\://repo1.maven.org/maven2/org/apache/maven/surefire/surefire-junit/2.6/surefire-junit-2.6-sources.jar. Error code 501, HTTPS Required
+http\://www.egovframe.go.kr/maven/.error=
+@default-mvn2-http\://repo1.maven.org/maven2/.lastUpdated=1612859213842
+https\://repo.maven.apache.org/maven2/.lastUpdated=1612859214851
+http\://www.egovframe.go.kr/maven/.lastUpdated=1612859213929
+http\://maven.egovframe.kr\:8080/maven/.error=
+http\://maven.egovframe.kr\:8080/maven/.lastUpdated=1612859213946

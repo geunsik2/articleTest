@@ -1,0 +1,11 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Wed Mar 03 16:52:30 KST 2021
+@default-mvn2-http\://repo1.maven.org/maven2/.lastUpdated=1614757950496
+http\://www.egovframe.go.kr/maven/.lastUpdated=1614757950552
+http\://www.egovframe.go.kr/maven/.error=
+http\://maven.egovframe.go.kr/maven/.lastUpdated=1614757950511
+http\://maven.egovframe.kr\:8080/maven/.error=
+http\://maven.egovframe.kr\:8080/maven/.lastUpdated=1614757950524
+https\://repo.maven.apache.org/maven2/.lastUpdated=1614757950842
+http\://repo1.maven.org/maven2/.error=Could not transfer artifact org.slf4j\:slf4j-parent\:pom\:1.7.10 from/to mvn2 (http\://repo1.maven.org/maven2/)\: Failed to transfer http\://repo1.maven.org/maven2/org/slf4j/slf4j-parent/1.7.10/slf4j-parent-1.7.10.pom. Error code 501, HTTPS Required
+http\://maven.egovframe.go.kr/maven/.error=

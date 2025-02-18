@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="egovframework.example.main.mapper.MainMapper">
+	
+	<select id="selectMain" resultType="MainVo">
+		    SELECT * FROM test
+    <!-- <where>
+        <if test="testContent != null">AND test_content = #{testContent}</if>
+        <if test="testDate != null">AND test_date = #{testDate}</if>
+    </where> -->
+    ORDER BY testId DESC
+    </select>
+	
+</mapper>

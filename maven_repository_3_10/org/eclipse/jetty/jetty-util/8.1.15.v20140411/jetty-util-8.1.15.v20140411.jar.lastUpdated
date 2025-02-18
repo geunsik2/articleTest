@@ -1,0 +1,5 @@
+#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
+#Thu Jun 08 16:09:28 KST 2017
+http\://www.egovframe.go.kr/maven/.error=Could not transfer artifact org.eclipse.jetty\:jetty-util\:jar\:8.1.15.v20140411 from/to egovframe (http\://www.egovframe.go.kr/maven/)\: unexpected end of stream on Connection{www.egovframe.go.kr\:80, proxy\=DIRECT hostAddress\=202.30.69.16 cipherSuite\=none protocol\=http/1.1} (recycle count\=0)
+https\://repo.maven.apache.org/maven2/.lastUpdated=1496905768930
+@default-egovframe-http\://www.egovframe.go.kr/maven/.lastUpdated=1496905758525

@@ -1,0 +1,14 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Tue Feb 09 17:27:01 KST 2021
+https\://repo1.maven.org/maven2/.lastUpdated=1612850701744
+@default-mvn2-http\://repo1.maven.org/maven2/.lastUpdated=1612859221225
+http\://www.egovframe.go.kr/maven/.lastUpdated=1612850701848
+http\://www.egovframe.go.kr/maven/.error=
+http\://maven.egovframe.go.kr/maven/.lastUpdated=1612850711775
+http\://maven.egovframe.kr\:8080/maven/.error=
+http\://maven.egovframe.kr\:8080/maven/.lastUpdated=1612850701759
+https\://repo.maven.apache.org/maven2/.lastUpdated=1612850702439
+https\://repo.maven.apache.org/maven2/.error=
+http\://repo1.maven.org/maven2/.error=Could not transfer artifact antlr\:antlr\:jar\:javadoc\:2.7.7 from/to mvn2 (http\://repo1.maven.org/maven2/)\: Failed to transfer http\://repo1.maven.org/maven2/antlr/antlr/2.7.7/antlr-2.7.7-javadoc.jar. Error code 501, HTTPS Required
+https\://repo1.maven.org/maven2/.error=
+http\://maven.egovframe.go.kr/maven/.error=

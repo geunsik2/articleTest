@@ -1,0 +1,6 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Wed Mar 03 16:04:59 KST 2021
+commons-collections-3.2.1.pom>central=
+commons-collections-3.2.1.pom>mvn2s=
+commons-collections-3.2.1.jar>mvn2s=
+commons-collections-3.2.1-sources.jar>mvn2s=

@@ -1,0 +1,54 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <parent>
+  	<groupId>egovframework.rte</groupId>
+  	<artifactId>egovframework.rte.root</artifactId>
+  	<version>1.0.0</version>
+  </parent> 
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>egovframework.rte</groupId>
+  <artifactId>egovframework.rte.fdl.string</artifactId>
+  <packaging>jar</packaging>
+  <version>1.0.0</version>
+  <name>egovframework.rte.fdl.string</name>
+  <url>http://maven.apache.org</url>
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.4</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>commons-logging</groupId>
+      <artifactId>commons-logging</artifactId>
+      <version>1.0.4</version>
+    </dependency>
+    <dependency>
+      <groupId>jakarta-regexp</groupId>
+      <artifactId>jakarta-regexp</artifactId>
+      <version>1.5</version>
+    </dependency>
+  </dependencies>
+  <!--
+  <profiles>
+    <profile>
+        <id>hudson</id>
+        <activation>
+            <property>
+                <name>BUILD_NUMBER</name>
+            </property>
+        </activation>
+        <build>
+            <plugins>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>cobertura-maven-plugin</artifactId>
+                </plugin>
+            </plugins>
+        </build>
+    </profile>
+  </profiles>
+  -->
+
+</project>

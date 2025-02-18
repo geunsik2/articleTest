@@ -1,0 +1,11 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Wed Mar 03 16:52:36 KST 2021
+@default-mvn2-http\://repo1.maven.org/maven2/.lastUpdated=1614757956543
+http\://www.egovframe.go.kr/maven/.lastUpdated=1614757956582
+http\://www.egovframe.go.kr/maven/.error=
+http\://maven.egovframe.go.kr/maven/.lastUpdated=1614757956551
+http\://maven.egovframe.kr\:8080/maven/.error=
+http\://maven.egovframe.kr\:8080/maven/.lastUpdated=1614757956560
+https\://repo.maven.apache.org/maven2/.lastUpdated=1614757956868
+http\://repo1.maven.org/maven2/.error=Could not transfer artifact org.jboss.shrinkwrap.descriptors\:shrinkwrap-descriptors-bom\:pom\:2.0.0-alpha-3 from/to mvn2 (http\://repo1.maven.org/maven2/)\: Failed to transfer http\://repo1.maven.org/maven2/org/jboss/shrinkwrap/descriptors/shrinkwrap-descriptors-bom/2.0.0-alpha-3/shrinkwrap-descriptors-bom-2.0.0-alpha-3.pom. Error code 501, HTTPS Required
+http\://maven.egovframe.go.kr/maven/.error=

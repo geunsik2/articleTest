@@ -1,0 +1,8 @@
+#NOTE: This is an internal implementation file, its format can be changed without prior notice.
+#Wed Mar 12 17:32:54 KST 2014
+default-http\://repo1.maven.org/maven2/.lastUpdated=1394613174022
+default-http\://repo.maven.apache.org/maven2/.lastUpdated=1394613174037
+http\://repo1.maven.org/maven2/.error=Could not transfer artifact org.springframework\:spring-test\:pom\:${spring.maven.artifact.version} from/to mvn2 (http\://repo1.maven.org/maven2/)\: IllegalArgumentException
+http\://www.egovframe.go.kr/maven/.error=Could not transfer artifact org.springframework\:spring-test\:pom\:${spring.maven.artifact.version} from/to egovframe (http\://www.egovframe.go.kr/maven/)\: IllegalArgumentException
+http\://repo.maven.apache.org/maven2/.error=Could not transfer artifact org.springframework\:spring-test\:pom\:${spring.maven.artifact.version} from/to central (http\://repo.maven.apache.org/maven2)\: IllegalArgumentException
+default-http\://www.egovframe.go.kr/maven/.lastUpdated=1394613174037

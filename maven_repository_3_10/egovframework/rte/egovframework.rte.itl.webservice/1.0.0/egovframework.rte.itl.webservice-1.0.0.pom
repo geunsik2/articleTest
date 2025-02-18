@@ -1,0 +1,97 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <parent>
+        <groupId>egovframework.rte</groupId>
+        <artifactId>egovframework.rte.root</artifactId>
+        <version>1.0.0</version>
+    </parent>
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>egovframework.rte</groupId>
+	<artifactId>egovframework.rte.itl.webservice</artifactId>
+	<packaging>jar</packaging>
+	<version>${parent.version}</version>
+	<name>egovframework.rte.itl.webservice</name>
+	<url>http://maven.apache.org</url>
+
+    <properties>
+        <cxf.version>2.2</cxf.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+		    <groupId>egovframework.rte</groupId>
+		    <artifactId>egovframework.rte.itl.integration</artifactId>
+		    <version>${parent.version}</version>
+        </dependency>
+        <dependency>
+		    <groupId>org.apache.cxf</groupId>
+		    <artifactId>cxf-rt-frontend-jaxws</artifactId>
+		    <version>${cxf.version}</version>
+        </dependency>
+        <dependency>
+		    <groupId>org.apache.cxf</groupId>
+		    <artifactId>cxf-rt-transports-http</artifactId>
+		    <version>${cxf.version}</version>
+        </dependency>
+        <!-- Jetty is needed if you're using the CXFServlet -->
+        <dependency>
+		    <groupId>org.apache.cxf</groupId>
+		    <artifactId>cxf-rt-transports-http-jetty</artifactId>
+		    <version>${cxf.version}</version>
+        </dependency>
+        <dependency>
+		    <groupId>org.apache.cxf</groupId>
+		    <artifactId>cxf-rt-databinding-aegis</artifactId>
+		    <version>${cxf.version}</version>
+        </dependency>
+        <dependency>
+		    <groupId>org.hibernate</groupId>
+		    <artifactId>hibernate</artifactId>
+		    <version>3.2.6.ga</version>
+		    <exclusions>
+                <exclusion>
+			        <groupId>cglib</groupId>
+			        <artifactId>cglib</artifactId>
+                </exclusion>
+                <exclusion>
+			        <groupId>asm</groupId>
+			        <artifactId>asm</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <!-- Replace 'cglib' & 'asm' which 'hibernate' depends on -->
+        <dependency>
+		    <groupId>cglib</groupId>
+		    <artifactId>cglib-nodep</artifactId>
+		    <version>2.1_3</version>
+        </dependency>
+        <dependency>
+		    <groupId>hsqldb</groupId>
+		    <artifactId>hsqldb</artifactId>
+		    <version>1.8.0.7</version>
+		    <scope>test</scope>
+        </dependency>
+        <dependency>
+		    <groupId>org.dbunit</groupId>
+		    <artifactId>dbunit</artifactId>
+		    <version>2.4.4</version>
+		    <scope>test</scope>
+        </dependency>
+        <dependency>
+		    <groupId>org.slf4j</groupId>
+		    <artifactId>slf4j-jdk14</artifactId>
+		    <version>1.5.6</version>
+		    <scope>test</scope>
+        </dependency>
+        <dependency>
+		    <groupId>commons-dbcp</groupId>
+		    <artifactId>commons-dbcp</artifactId>
+		    <version>1.2.2</version>
+		    <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+</project>

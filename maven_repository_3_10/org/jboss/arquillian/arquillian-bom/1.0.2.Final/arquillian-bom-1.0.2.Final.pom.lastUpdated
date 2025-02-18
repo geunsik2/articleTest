@@ -1,0 +1,11 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Wed Mar 03 16:52:35 KST 2021
+@default-mvn2-http\://repo1.maven.org/maven2/.lastUpdated=1614757954805
+http\://www.egovframe.go.kr/maven/.lastUpdated=1614757954843
+http\://www.egovframe.go.kr/maven/.error=
+http\://maven.egovframe.go.kr/maven/.lastUpdated=1614757954814
+http\://maven.egovframe.kr\:8080/maven/.error=
+http\://maven.egovframe.kr\:8080/maven/.lastUpdated=1614757954823
+https\://repo.maven.apache.org/maven2/.lastUpdated=1614757955142
+http\://repo1.maven.org/maven2/.error=Could not transfer artifact org.jboss.arquillian\:arquillian-bom\:pom\:1.0.2.Final from/to mvn2 (http\://repo1.maven.org/maven2/)\: Failed to transfer http\://repo1.maven.org/maven2/org/jboss/arquillian/arquillian-bom/1.0.2.Final/arquillian-bom-1.0.2.Final.pom. Error code 501, HTTPS Required
+http\://maven.egovframe.go.kr/maven/.error=

@@ -1,0 +1,61 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+   <parent>
+  	<groupId>egovframework.rte</groupId>
+  	<artifactId>egovframework.rte.root</artifactId>
+  	<version>1.0.0</version>
+  </parent>
+
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>egovframework.rte</groupId>
+  <artifactId>egovframework.rte.fdl.xml</artifactId>
+  <packaging>jar</packaging>
+  <version>${parent.version}</version>
+  <name>egovframework.rte.fdl.xml</name>
+  <url>http://maven.apache.org</url>
+  <dependencies>
+    <dependency>
+	    <groupId>xerces</groupId>
+	    <artifactId>xercesImpl</artifactId>
+	    <version>2.9.1</version>
+	 </dependency>
+		<dependency>
+  <groupId>jdom</groupId>
+  <artifactId>jdom</artifactId>
+  <version>1.0</version>
+</dependency>
+<dependency>
+      <groupId>jaxen</groupId>
+      <artifactId>jaxen</artifactId>
+      <version>1.0-FCS</version>
+      <optional>true</optional>
+    </dependency>
+     <dependency>
+      <groupId>saxpath</groupId>
+      <artifactId>saxpath</artifactId>
+      <version>1.0-FCS</version>
+      <optional>true</optional>
+    </dependency>
+    
+    <dependency>
+            <groupId>net.sf.ehcache</groupId>
+            <artifactId>ehcache</artifactId>
+            <version>1.4.1</version>
+        </dependency> 
+
+   <dependency>
+	 <groupId>javax.annotation</groupId>
+	 <artifactId>jsr250-api</artifactId>
+	 <version>1.0</version>
+	 </dependency> 
+	 
+<dependency>
+     <groupId>log4j</groupId>
+     <artifactId>log4j</artifactId>
+     <version>1.2.13</version>
+     <scope>compile</scope>
+    </dependency>
+
+  </dependencies>
+</project>

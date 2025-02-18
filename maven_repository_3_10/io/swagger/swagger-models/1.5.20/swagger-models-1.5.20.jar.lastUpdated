@@ -1,0 +1,11 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Wed Mar 03 16:52:47 KST 2021
+@default-mvn2-http\://repo1.maven.org/maven2/.lastUpdated=1614757960549
+http\://www.egovframe.go.kr/maven/.lastUpdated=1614757961320
+http\://www.egovframe.go.kr/maven/.error=
+http\://maven.egovframe.go.kr/maven/.lastUpdated=1614757960730
+http\://maven.egovframe.kr\:8080/maven/.error=
+http\://maven.egovframe.kr\:8080/maven/.lastUpdated=1614757960916
+https\://repo.maven.apache.org/maven2/.lastUpdated=1614757967712
+http\://repo1.maven.org/maven2/.error=Could not transfer artifact io.swagger\:swagger-models\:jar\:1.5.20 from/to mvn2 (http\://repo1.maven.org/maven2/)\: Failed to transfer http\://repo1.maven.org/maven2/io/swagger/swagger-models/1.5.20/swagger-models-1.5.20.jar. Error code 501, HTTPS Required
+http\://maven.egovframe.go.kr/maven/.error=

@@ -1,0 +1,31 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  
+  <parent>
+  	<groupId>egovframework.rte</groupId>
+  	<artifactId>egovframework.rte.root</artifactId>
+  	<version>1.0.0</version>
+  </parent>
+  
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>egovframework.rte</groupId>
+  <artifactId>egovframework.rte.fdl.crypto</artifactId>
+  <packaging>jar</packaging>
+  <version>${parent.version}</version>
+  <name>egovframework.rte.fdl.crypto</name>
+  <url>http://maven.apache.org</url>
+  <dependencies>
+    <dependency>
+      <groupId>org.jasypt</groupId>
+      <artifactId>jasypt</artifactId>
+      <version>1.5</version>
+    </dependency>
+
+	<dependency>
+      <groupId>com.ibm.icu</groupId>
+      <artifactId>icu4j</artifactId>
+      <version>3.4.4</version>
+    </dependency>
+
+  </dependencies>
+</project>

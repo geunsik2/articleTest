@@ -1,0 +1,28 @@
+package egovframework.example.main.dao;
+
+import java.util.List;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import egovframework.example.main.mapper.MainMapper;
+import egovframework.example.main.vo.MainVo;
+
+// @Repository: 이 클래스가 데이터 접근 계층의 컴포넌트임을 나타냄
+@Repository
+public class MainDaoImpl implements MainDao {
+	
+	// @Autowired: SqlSession 빈을 자동으로 주입받음
+	@Autowired
+	private SqlSession sqlSession;
+	
+	@Override
+	public List<MainVo> selectMain(MainVo mainVo) throws Exception {
+
+		MainMapper mapper = sqlSession.getMapper(MainMapper.class);
+
+		return mapper.selectMain(mainVo);
+	}
+	
+}

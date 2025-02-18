@@ -1,0 +1,7 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Wed Mar 03 16:52:46 KST 2021
+junit-4.10.jar>central=
+junit-4.10.pom>mvn2s=
+junit-4.10.pom>central=
+junit-4.10.jar>mvn2s=
+junit-4.10-sources.jar>mvn2s=

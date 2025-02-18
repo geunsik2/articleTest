@@ -1,0 +1,62 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.android.ddmlib</groupId>
+    <artifactId>ddmlib</artifactId>
+    <version>r16</version>
+    <packaging>jar</packaging>
+    <!-- 
+    Package was created and published to the Central repository by the 
+    developers of the Android4Maven project at https://sourceforge.net/projects/android4maven/
+    --> 
+    <parent>
+        <groupId>org.sonatype.oss</groupId>
+        <artifactId>oss-parent</artifactId>
+        <version>7</version>
+    </parent>
+
+    <name>Google Android Tools ddmlib</name>
+    <description>A ddmlib jar that provides APIs for talking with Dalvik VM (both on Android phones and emulators).</description>
+    <url>http://tools.android.com/</url>
+    <inceptionYear>2008</inceptionYear>
+    <licenses>
+        <license>
+            <name>Apache 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+            <comments>
+                While the EULA for the Android SDK restricts distribution of those binaries, the source code
+                is licensed under Apache 2.0 which allows compiling binaries from source and then distributing
+                those versions.
+            </comments>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+    <scm>
+        <url>https://android.googlesource.com/</url>
+        <connection>https://android.googlesource.com/platform/manifest.git</connection>
+    </scm>
+    <developers>
+        <developer>
+            <name>The Android Open Source Projects</name>
+        </developer>
+    </developers>
+
+    <properties>
+        <branch>ics-mr0</branch>
+        <commit>fa8fa3cb242095a83542292da9a17881b664e92a</commit>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.3.2</version>
+                <configuration>
+                    <target>1.5</target>
+                    <debug>false</debug>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

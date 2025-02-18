@@ -1,0 +1,13 @@
+#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
+#Thu Jul 06 17:59:46 KST 2017
+https\://mvnrepository.com/artifact/oracle/.lastUpdated=1499331520124
+@default-egovframe-http\://www.egovframe.go.kr/maven/.lastUpdated=1499331520427
+http\://www.egovframe.go.kr/maven/.error=Could not transfer artifact oracle\:ojdbc6\:jar\:11.2.0.3 from/to egovframe (http\://www.egovframe.go.kr/maven/)\: unexpected end of stream on Connection{www.egovframe.go.kr\:80, proxy\=DIRECT hostAddress\=202.30.69.16 cipherSuite\=none protocol\=http/1.1} (recycle count\=0)
+http\://maven.egovframe.kr\:8080/maven/.error=
+http\://maven.egovframe.kr\:8080/maven/.lastUpdated=1499331520442
+http\://www.datanucleus.org/downloads/maven2/.lastUpdated=1499331586416
+https\://repo.maven.apache.org/maven2/.lastUpdated=1499331521017
+https\://repo.maven.apache.org/maven2/.error=
+https\://mvnrepository.com/artifact/oracle/.error=
+http\://repo1.maven.org/maven2/.error=
+http\://repo1.maven.org/maven2/.lastUpdated=1499331520401

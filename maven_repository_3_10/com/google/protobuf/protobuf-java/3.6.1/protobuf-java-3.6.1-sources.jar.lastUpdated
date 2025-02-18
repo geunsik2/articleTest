@@ -1,0 +1,9 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Tue Feb 09 17:26:59 KST 2021
+http\://repo1.maven.org/maven2/.error=Could not transfer artifact com.google.protobuf\:protobuf-java\:jar\:sources\:3.6.1 from/to mvn2 (http\://repo1.maven.org/maven2/)\: Failed to transfer http\://repo1.maven.org/maven2/com/google/protobuf/protobuf-java/3.6.1/protobuf-java-3.6.1-sources.jar. Error code 501, HTTPS Required
+http\://www.egovframe.go.kr/maven/.error=
+@default-mvn2-http\://repo1.maven.org/maven2/.lastUpdated=1612859218303
+https\://repo.maven.apache.org/maven2/.lastUpdated=1612859219726
+http\://www.egovframe.go.kr/maven/.lastUpdated=1612859218393
+http\://maven.egovframe.kr\:8080/maven/.error=
+http\://maven.egovframe.kr\:8080/maven/.lastUpdated=1612859218408

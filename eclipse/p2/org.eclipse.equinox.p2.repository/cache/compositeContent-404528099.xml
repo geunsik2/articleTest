@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?compositeMetadataRepository version='1.0.0'?>
+<repository name='Marian Schedenig&apos;s Eclipse Update Site' type='org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepository' version='1.0.0'>
+    <properties size='1'>
+        <property name='p2.atomic.composite.loading' value='true'/>
+    </properties>
+    <children size='8'>
+        <child location='clippets'/>
+        <child location='clippets-c'/>
+        <child location='clippets-java'/>
+        <child location='grepconsole'/>
+        <child location='popupnotifications'/>
+        <child location='quickbookmarks'/>
+        <child location='tailconsole'/>
+        <child location='old'/>
+    </children>
+</repository>

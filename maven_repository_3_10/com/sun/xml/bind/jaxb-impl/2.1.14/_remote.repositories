@@ -1,0 +1,7 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Wed Mar 03 16:52:45 KST 2021
+jaxb-impl-2.1.14.jar>central=
+jaxb-impl-2.1.14.jar>mvn2s=
+jaxb-impl-2.1.14.pom>central=
+jaxb-impl-2.1.14-sources.jar>mvn2s=
+jaxb-impl-2.1.14.pom>mvn2s=

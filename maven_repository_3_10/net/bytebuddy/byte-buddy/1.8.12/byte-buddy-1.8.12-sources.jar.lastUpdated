@@ -1,0 +1,11 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Wed Mar 03 16:53:26 KST 2021
+@default-mvn2-http\://repo1.maven.org/maven2/.lastUpdated=1614758004683
+http\://www.egovframe.go.kr/maven/.lastUpdated=1614758004820
+http\://www.egovframe.go.kr/maven/.error=
+http\://maven.egovframe.go.kr/maven/.lastUpdated=1614758004699
+http\://maven.egovframe.kr\:8080/maven/.error=
+http\://maven.egovframe.kr\:8080/maven/.lastUpdated=1614758004720
+https\://repo.maven.apache.org/maven2/.lastUpdated=1614758006311
+http\://repo1.maven.org/maven2/.error=Could not transfer artifact net.bytebuddy\:byte-buddy\:jar\:sources\:1.8.12 from/to mvn2 (http\://repo1.maven.org/maven2/)\: Failed to transfer http\://repo1.maven.org/maven2/net/bytebuddy/byte-buddy/1.8.12/byte-buddy-1.8.12-sources.jar. Error code 501, HTTPS Required
+http\://maven.egovframe.go.kr/maven/.error=

@@ -1,0 +1,14 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Wed Mar 03 16:53:09 KST 2021
+https\://repo1.maven.org/maven2/.lastUpdated=1614755385533
+@default-mvn2-http\://repo1.maven.org/maven2/.lastUpdated=1614757989653
+http\://www.egovframe.go.kr/maven/.lastUpdated=1614755386280
+http\://www.egovframe.go.kr/maven/.error=
+http\://maven.egovframe.go.kr/maven/.lastUpdated=1614757989670
+http\://maven.egovframe.kr\:8080/maven/.error=
+http\://maven.egovframe.kr\:8080/maven/.lastUpdated=1614755385569
+https\://repo.maven.apache.org/maven2/.lastUpdated=1614755386876
+https\://repo.maven.apache.org/maven2/.error=
+http\://repo1.maven.org/maven2/.error=Could not transfer artifact javax.xml.bind\:jsr173_api\:jar\:sources\:1.0 from/to mvn2 (http\://repo1.maven.org/maven2/)\: Failed to transfer http\://repo1.maven.org/maven2/javax/xml/bind/jsr173_api/1.0/jsr173_api-1.0-sources.jar. Error code 501, HTTPS Required
+https\://repo1.maven.org/maven2/.error=
+http\://maven.egovframe.go.kr/maven/.error=

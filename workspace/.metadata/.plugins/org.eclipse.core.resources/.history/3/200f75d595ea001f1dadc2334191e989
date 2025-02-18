@@ -1,0 +1,96 @@
+package egovframework.example.main.controller;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import egovframework.example.main.service.MainService;
+import egovframework.example.main.vo.MainVo;
+
+// @Controller: 이 클래스가 Spring MVC의 컨트롤러임을 나타냄
+// 클라이언트의 요청을 처리하고 응답을 반환하는 역할을 담당
+@Controller
+public class MainController {
+	
+	// @Autowired: 의존성 주입(Dependency Injection)을 위한 어노테이션
+    // Spring이 MainService 타입의 빈을 찾아 자동으로 주입해줌
+	@Autowired
+	private MainService mainService;
+
+	 // 게시글 목록 페이지
+	@RequestMapping("/main.do")
+	public String mainPage(MainVo mainVo, Model model) throws Exception {
+		
+		// 게시글 목록을 조회하여 모델에 추가
+		model.addAttribute("list", mainService.selectMain(mainVo));
+		
+		/*
+		 * System.out.println("Model attribute added: " + model.addAttribute("list"));
+		 * List<MainVo> result = mainService.selectMain(mainVo);
+		 * System.out.println("Service returned: " + result); model.addAttribute("list",
+		 * result); System.out.println("Model contents: " + model.asMap());
+		 */
+
+		return "main";
+	}
+	
+	// 게시글 상세 페이지
+    @RequestMapping("mainDetail.do")
+    public String viewForm(Model model, HttpServletRequest request) throws Exception {
+       
+    	// 요청 파라미터에서 testId 추출
+        int testId = Integer.parseInt(request.getParameter("testId"));
+        
+     // testId로 상세 정보 조회
+        MainVo mainVo = mainService.selectDetail(testId);
+        
+        // 조회된 정보를 모델에 추가
+        model.addAttribute("vo", mainVo);
+        
+        return "mainDetail";
+    }
+    
+    // 게시글 작성 페이지
+    @RequestMapping("/mainRegister.do")
+    public String mainRegister() {
+        
+        return "mainRegister";
+    }
+    
+    // 게시글 작성
+    @RequestMapping("/insertMain.do")
+    public String write(@ModelAttribute("mainVo") MainVo mainVo) throws Exception {
+        
+    	// 새 게시글 등록
+        mainService.insertMain(mainVo);
+
+        return "redirect:main.do";
+    }
+    
+    // 게시글 수정
+    @RequestMapping("/updateMain.do")
+    public String updateMain(@ModelAttribute("mainVo") MainVo mainVo) throws Exception {
+        
+    	// 게시글 수정
+        mainService.updateMain(mainVo);
+
+        return "redirect:mainDetail.do?testId=" + mainVo.getTestId();
+    }
+    
+    // 게시글 삭제
+    @RequestMapping("/deleteMain.do")
+    public String deleteMain(HttpServletRequest request) throws Exception {
+        
+    	// 요청 파라미터에서 testId 추출
+        int testId = Integer.parseInt(request.getParameter("testId"));
+        
+        // 글 삭제
+        mainService.deleteTest(testId);
+        
+        return "redirect:main.do";
+    }
+}

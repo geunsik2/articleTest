@@ -1,0 +1,11 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Wed Mar 03 16:52:48 KST 2021
+@default-mvn2-http\://repo1.maven.org/maven2/.lastUpdated=1614757960557
+http\://www.egovframe.go.kr/maven/.lastUpdated=1614757961326
+http\://www.egovframe.go.kr/maven/.error=
+http\://maven.egovframe.go.kr/maven/.lastUpdated=1614757960737
+http\://maven.egovframe.kr\:8080/maven/.error=
+http\://maven.egovframe.kr\:8080/maven/.lastUpdated=1614757960922
+https\://repo.maven.apache.org/maven2/.lastUpdated=1614757968051
+http\://repo1.maven.org/maven2/.error=Could not transfer artifact org.springframework.plugin\:spring-plugin-core\:jar\:1.2.0.RELEASE from/to mvn2 (http\://repo1.maven.org/maven2/)\: Failed to transfer http\://repo1.maven.org/maven2/org/springframework/plugin/spring-plugin-core/1.2.0.RELEASE/spring-plugin-core-1.2.0.RELEASE.jar. Error code 501, HTTPS Required
+http\://maven.egovframe.go.kr/maven/.error=

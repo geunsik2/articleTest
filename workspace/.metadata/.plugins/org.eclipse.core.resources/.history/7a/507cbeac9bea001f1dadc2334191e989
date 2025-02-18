@@ -1,0 +1,11 @@
+package egovframework.example.main.dao;
+
+import java.util.List;
+
+import egovframework.example.main.vo.MainVo;
+
+public interface MainDao {
+
+	public List<MainVo> selectMain(MainVo mainVo) throws Exception;
+	
+}

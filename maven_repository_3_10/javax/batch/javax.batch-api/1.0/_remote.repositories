@@ -1,0 +1,7 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Tue Feb 09 17:26:39 KST 2021
+javax.batch-api-1.0.pom>mvn2s=
+javax.batch-api-1.0.jar>mvn2s=
+javax.batch-api-1.0.jar>central=
+javax.batch-api-1.0-sources.jar>mvn2s=
+javax.batch-api-1.0.pom>central=

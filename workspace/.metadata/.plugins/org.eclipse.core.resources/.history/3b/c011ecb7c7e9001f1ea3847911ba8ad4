@@ -1,0 +1,12 @@
+package egovframework.example.main.vo;
+
+public class MainVo {
+
+	private int testId;
+	private String testTitle;
+	private String testContent;
+	private String testName;
+	private String testDate;
+	
+	
+}

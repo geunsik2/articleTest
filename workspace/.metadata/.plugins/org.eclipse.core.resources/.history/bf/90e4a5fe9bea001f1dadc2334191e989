@@ -1,0 +1,33 @@
+package egovframework.example.main.dao;
+
+import java.util.List;
+
+import egovframework.example.main.vo.MainVo;
+
+public interface MainDao {
+
+
+    // 게시글 목록을 조회합니다.
+    public List<MainVo> selectTest(MainVo mainVo) throws Exception;
+ 
+    // 게시글 등록
+    public void insertTest(MainVo mainVo) throws Exception;
+ 
+    // 특정 게시글의 상세 정보를 조회합니다.
+    public MainVo selectDetail(int testId) throws Exception;
+ 
+    /**
+     * 기존 테스트 정보를 수정합니다.
+     * @param mainVo 수정할 테스트 정보를 담은 MainVo 객체
+     * @throws Exception 데이터베이스 수정 중 발생할 수 있는 예외
+     */
+    public void updateTest(MainVo mainVo) throws Exception;
+ 
+    /**
+     * 특정 테스트를 삭제합니다.
+     * @param testId 삭제할 테스트의 ID
+     * @throws Exception 데이터베이스 삭제 중 발생할 수 있는 예외
+     */
+    public void deleteTest(int testId) throws Exception;
+	
+}

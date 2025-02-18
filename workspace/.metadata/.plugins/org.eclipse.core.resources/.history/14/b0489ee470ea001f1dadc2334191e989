@@ -1,0 +1,26 @@
+package egovframework.example.main.dao;
+
+import java.util.List;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import egovframework.example.main.mapper.MainMapper;
+import egovframework.example.main.vo.MainVo;
+
+@Repository
+public class MainDaoImpl implements MainDao {
+	
+	@Autowired
+	private SqlSession sqlSession;
+	
+	@Override
+	public List<MainVo> selectMain(MainVo mainVo) throws Exception {
+		MainMapper mapper = sqlSession.getMapper(MainMapper.class);
+		System.out.println(mainVo);
+
+		return mapper.selectMain(mainVo);
+	}
+	
+}

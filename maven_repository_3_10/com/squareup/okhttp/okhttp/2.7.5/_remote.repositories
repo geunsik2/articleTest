@@ -1,0 +1,5 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Tue Feb 09 15:01:27 KST 2021
+okhttp-2.7.5-sources.jar>mvn2s=
+okhttp-2.7.5.pom>mvn2s=
+okhttp-2.7.5.jar>mvn2s=

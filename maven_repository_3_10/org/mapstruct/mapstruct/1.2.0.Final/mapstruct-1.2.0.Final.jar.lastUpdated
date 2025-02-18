@@ -1,0 +1,11 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Wed Mar 03 16:52:48 KST 2021
+@default-mvn2-http\://repo1.maven.org/maven2/.lastUpdated=1614757960559
+http\://www.egovframe.go.kr/maven/.lastUpdated=1614757961327
+http\://www.egovframe.go.kr/maven/.error=
+http\://maven.egovframe.go.kr/maven/.lastUpdated=1614757960738
+http\://maven.egovframe.kr\:8080/maven/.error=
+http\://maven.egovframe.kr\:8080/maven/.lastUpdated=1614757960923
+https\://repo.maven.apache.org/maven2/.lastUpdated=1614757968118
+http\://repo1.maven.org/maven2/.error=Could not transfer artifact org.mapstruct\:mapstruct\:jar\:1.2.0.Final from/to mvn2 (http\://repo1.maven.org/maven2/)\: Failed to transfer http\://repo1.maven.org/maven2/org/mapstruct/mapstruct/1.2.0.Final/mapstruct-1.2.0.Final.jar. Error code 501, HTTPS Required
+http\://maven.egovframe.go.kr/maven/.error=

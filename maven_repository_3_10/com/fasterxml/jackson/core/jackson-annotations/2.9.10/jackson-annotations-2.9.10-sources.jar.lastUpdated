@@ -1,0 +1,11 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Wed Mar 03 16:53:12 KST 2021
+@default-mvn2-http\://repo1.maven.org/maven2/.lastUpdated=1614757991870
+http\://www.egovframe.go.kr/maven/.lastUpdated=1614757991984
+http\://www.egovframe.go.kr/maven/.error=
+http\://maven.egovframe.go.kr/maven/.lastUpdated=1614757991885
+http\://maven.egovframe.kr\:8080/maven/.error=
+http\://maven.egovframe.kr\:8080/maven/.lastUpdated=1614757991899
+https\://repo.maven.apache.org/maven2/.lastUpdated=1614757992860
+http\://repo1.maven.org/maven2/.error=Could not transfer artifact com.fasterxml.jackson.core\:jackson-annotations\:jar\:sources\:2.9.10 from/to mvn2 (http\://repo1.maven.org/maven2/)\: Failed to transfer http\://repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-annotations/2.9.10/jackson-annotations-2.9.10-sources.jar. Error code 501, HTTPS Required
+http\://maven.egovframe.go.kr/maven/.error=

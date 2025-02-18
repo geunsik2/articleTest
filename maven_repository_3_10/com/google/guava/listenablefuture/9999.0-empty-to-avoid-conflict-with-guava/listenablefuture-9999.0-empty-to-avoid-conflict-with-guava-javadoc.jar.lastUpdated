@@ -1,0 +1,14 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Wed Mar 03 16:53:49 KST 2021
+https\://repo1.maven.org/maven2/.lastUpdated=1614755424685
+@default-mvn2-http\://repo1.maven.org/maven2/.lastUpdated=1614758029875
+http\://www.egovframe.go.kr/maven/.lastUpdated=1614755424802
+http\://www.egovframe.go.kr/maven/.error=
+http\://maven.egovframe.go.kr/maven/.lastUpdated=1614758029905
+http\://maven.egovframe.kr\:8080/maven/.error=
+http\://maven.egovframe.kr\:8080/maven/.lastUpdated=1614755424702
+https\://repo.maven.apache.org/maven2/.lastUpdated=1614755425403
+https\://repo.maven.apache.org/maven2/.error=
+http\://repo1.maven.org/maven2/.error=Could not transfer artifact com.google.guava\:listenablefuture\:jar\:javadoc\:9999.0-empty-to-avoid-conflict-with-guava from/to mvn2 (http\://repo1.maven.org/maven2/)\: Failed to transfer http\://repo1.maven.org/maven2/com/google/guava/listenablefuture/9999.0-empty-to-avoid-conflict-with-guava/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava-javadoc.jar. Error code 501, HTTPS Required
+https\://repo1.maven.org/maven2/.error=
+http\://maven.egovframe.go.kr/maven/.error=

@@ -1,0 +1,14 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Wed Mar 03 16:53:17 KST 2021
+https\://repo1.maven.org/maven2/.lastUpdated=1614755398415
+@default-mvn2-http\://repo1.maven.org/maven2/.lastUpdated=1614757997103
+http\://www.egovframe.go.kr/maven/.lastUpdated=1614755398532
+http\://www.egovframe.go.kr/maven/.error=
+http\://maven.egovframe.go.kr/maven/.lastUpdated=1614757997118
+http\://maven.egovframe.kr\:8080/maven/.error=
+http\://maven.egovframe.kr\:8080/maven/.lastUpdated=1614755398431
+https\://repo.maven.apache.org/maven2/.lastUpdated=1614755399136
+https\://repo.maven.apache.org/maven2/.error=
+http\://repo1.maven.org/maven2/.error=Could not transfer artifact log4j\:log4j\:jar\:sources\:1.2.12 from/to mvn2 (http\://repo1.maven.org/maven2/)\: Failed to transfer http\://repo1.maven.org/maven2/log4j/log4j/1.2.12/log4j-1.2.12-sources.jar. Error code 501, HTTPS Required
+https\://repo1.maven.org/maven2/.error=
+http\://maven.egovframe.go.kr/maven/.error=

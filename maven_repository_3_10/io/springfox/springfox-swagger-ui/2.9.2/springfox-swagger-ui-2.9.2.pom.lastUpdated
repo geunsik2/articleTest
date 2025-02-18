@@ -1,0 +1,11 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Wed Mar 03 16:52:37 KST 2021
+@default-mvn2-http\://repo1.maven.org/maven2/.lastUpdated=1614757957123
+http\://www.egovframe.go.kr/maven/.lastUpdated=1614757957174
+http\://www.egovframe.go.kr/maven/.error=
+http\://maven.egovframe.go.kr/maven/.lastUpdated=1614757957143
+http\://maven.egovframe.kr\:8080/maven/.error=
+http\://maven.egovframe.kr\:8080/maven/.lastUpdated=1614757957153
+https\://repo.maven.apache.org/maven2/.lastUpdated=1614757957470
+http\://repo1.maven.org/maven2/.error=Could not transfer artifact io.springfox\:springfox-swagger-ui\:pom\:2.9.2 from/to mvn2 (http\://repo1.maven.org/maven2/)\: Failed to transfer http\://repo1.maven.org/maven2/io/springfox/springfox-swagger-ui/2.9.2/springfox-swagger-ui-2.9.2.pom. Error code 501, HTTPS Required
+http\://maven.egovframe.go.kr/maven/.error=

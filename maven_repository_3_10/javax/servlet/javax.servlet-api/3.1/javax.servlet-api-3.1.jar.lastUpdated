@@ -1,0 +1,12 @@
+#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
+#Tue Jun 27 13:55:49 KST 2017
+@default-http\://www.egovframe.go.kr/maven/.lastUpdated=1418692038324
+http\://www.egovframe.go.kr/maven/.error=Could not transfer artifact javax.servlet\:javax.servlet-api\:jar\:3.1 from/to egovframe (http\://www.egovframe.go.kr/maven/)\: EOFException
+http\://repo.maven.apache.org/maven2/.lastUpdated=1418692038624
+http\://repo.maven.apache.org/maven2/.error=
+http\://maven.egovframe.kr\:8080/maven/.error=
+http\://maven.egovframe.kr\:8080/maven/.lastUpdated=1498539349006
+https\://repo.maven.apache.org/maven2/.lastUpdated=1498539349616
+https\://repo.maven.apache.org/maven2/.error=
+http\://repo1.maven.org/maven2/.lastUpdated=1418692038304
+http\://repo1.maven.org/maven2/.error=
