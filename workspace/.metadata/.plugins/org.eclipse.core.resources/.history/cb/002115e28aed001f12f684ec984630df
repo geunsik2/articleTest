@@ -1,0 +1,17 @@
+package egovframework.example.main.controller;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.stereotype.Controller;
+
+@Controller
+public class FileDownloadController {
+	
+	@RequestMapping("fileDownload.do")
+	public void fileDownload(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
+		String filename = request.getParameter("fileName");
+	}
+
+}
