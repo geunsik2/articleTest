@@ -30,26 +30,35 @@
     <br />
     <br />
     <div class="container">
-        <!-- 게시글 상세 정보 폼 -->
-        <form action="updateMain.do" id="viewForm" method="post"
-            enctype="multipart/form-data">
+        <form action="updateMain.do" id="viewForm" method="post" encType="multipart/form-data">
             <table class="table table-bordered">
                 <tbody>
                     <tr>
                         <th>글번호</th>
-                        <td><input name="testId" type="text" value="${vo.testId}"
-                            class="form-control" readonly /></td>
+                        <td><input name="testId" type="text" value="${vo.testId}" class="form-control" readonly /></td>
                     </tr>
                     <tr>
                         <th>제목</th>
-                        <td><input type="text" value="${vo.testTitle}"
-                            name="testTitle" class="form-control" /></td>
+                        <td><input type="text" value="${vo.testTitle}" name="testTitle" class="form-control" /></td>
                     </tr>
                     <tr>
                         <th>내용</th>
-                        <td><textarea name="testContent" class="form-control"
-                                style="height: 200px;">${vo.testContent}</textarea></td>
-
+                        <td><textarea name="testContent" class="form-control" style="height: 200px;">${vo.testContent}</textarea></td>
+                    </tr>
+                    <tr>
+                        <c:if test="${vo.fileName ne null}">
+                            <tr>
+                                <th>다운로드</th>
+                                <td><a href="fileDownload.do?fileName=${vo.fileName}">
+                                       <input type="text" id="filename" value="${vo.fileName}" name="fileName" class="form-control" readonly="readonly" /></a>
+                                       <button id="filedelete" type="button" class="btn_previous" style="float: right">파일삭제</button>
+                                </td>
+                            </tr>
+                        </c:if>
+                    </tr>
+                    <tr>
+                        <th>첨부파일</th>
+                        <td><input type="file" name="uploadFile"></td>
                     </tr>
                     <tr>
                         <td colspan="2" style="text-align: right;">
@@ -61,7 +70,7 @@
                 </tbody>
             </table>
         </form>
-    </div>
+   	</div>
 </body>
 <script type="text/javascript">
     // 수정 버튼 클릭 이벤트
@@ -85,11 +94,15 @@
             return;
         }
     });
-
+    
     // 이전 버튼 클릭 이벤트
-    $("#btn_previous").click(function previous() {
-        $(location).attr('href', 'main.do');
+    $(document).on('click', '#btn_previous', function(e) {
+    	$(location).attr('href', 'main.do');
+    })
 
-    });
+    // 파일 삭제 버튼 클릭 이벤트
+    $(document).on('click', '#filedelete', function(e) {
+    	$('#filename').val(null);
+    })
 </script>
 </html>

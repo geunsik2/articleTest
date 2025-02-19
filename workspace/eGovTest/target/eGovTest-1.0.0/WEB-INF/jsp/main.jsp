@@ -41,6 +41,11 @@
  
             <tbody>
             <!-- JSTL을 사용하여 게시글 목록 반복 출력 -->
+            <c:if test="${empty list}">
+			    <tr>
+			        <td colspan="4">표시할 게시글이 없습니다.</td>
+			    </tr>
+			</c:if>
             <c:forEach items="${list}" var="result">
                 <tr>
                     <td>${result.testId}</td>

@@ -32,8 +32,8 @@ public class MainController {
     // Spring이 MainService 타입의 빈을 찾아 자동으로 주입해줌
 	@Autowired
 	private MainService mainService;
-
-	 // 게시글 목록 페이지, 페이징, 검색
+	
+	// 게시글 목록 페이지, 페이징, 검색
 	@RequestMapping("/main.do")
 	public String mainPage(Model model
 			,@RequestParam(required=false, defaultValue="1")int page
@@ -56,20 +56,18 @@ public class MainController {
 		model.addAttribute("pagination", search);
 		// 게시글 화면 출력
 		model.addAttribute("list", mainService.selectMain(search));
-		
-		//model.addAttribute("list", mainService.selectMain(mainVo));
 
 		return "main";
 	}
 	
 	// 게시글 상세 페이지
-    @RequestMapping("mainDetail.do")
+    @RequestMapping("/mainDetail.do")
     public String viewForm(Model model, HttpServletRequest request) throws Exception {
        
     	// 요청 파라미터에서 testId 추출
         int testId = Integer.parseInt(request.getParameter("testId"));
         
-     // testId로 상세 정보 조회
+        // testId로 상세 정보 조회
         MainVo mainVo = mainService.selectDetail(testId);
         
         // 조회된 정보를 모델에 추가
@@ -88,7 +86,6 @@ public class MainController {
     // 게시글 작성
     @RequestMapping("/insertMain.do")
     public String write(@ModelAttribute("mainVo") MainVo mainVo) throws Exception {
-    	//logger.debug("게시글 작성 시작: {}", mainVo);
 
     	// 파일 업로드 처리
     	String fileName = null;
@@ -117,9 +114,7 @@ public class MainController {
 		mainVo.setFileName(fileName);
     	
     	// 새 게시글 등록
-		//logger.debug("게시글 등록 시작");
         mainService.insertMain(mainVo);
-        //logger.debug("게시글 등록 완료");
       
         return "redirect:main.do";
     }

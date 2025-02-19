@@ -52,8 +52,9 @@
                    	</tr>
                     <tr>
                         <td colspan="2">
-                            <button id="btn_register" type="button" class="btn_register">등록</button>
-                            <button id="btn_previous" type="button" class="btn_previous">이전</button>
+                            <button id="btn_register" type="button" class="btn btn-primary">등록</button>
+                            <button id="btn_previous" type="button" class="btn btn-default">이전</button>
+                        </td>
                     </tr>
 
                 </tbody>

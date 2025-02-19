@@ -1,3 +1,4 @@
+egovframework\example\main\controller\FileDownloadController.class
 egovframework\example\main\mapper\MainMapper.class
 egovframework\example\main\dao\MainDao.class
 egovframework\example\cmmn\web\EgovBindingInitializer.class

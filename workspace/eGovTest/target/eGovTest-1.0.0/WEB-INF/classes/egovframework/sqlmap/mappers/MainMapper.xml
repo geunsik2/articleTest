@@ -47,7 +47,7 @@
     
     <!-- 게시글 삽입 -->
     <insert id="insertMain" parameterType="MainVo">
-    	<![CDATA[INSERT INTO test(testTitle, testContent, testName, testDate)
+    	<![CDATA[INSERT INTO test(testTitle, testContent, testName, testDate, fileName)
         VALUES(#{testTitle},#{testContent},'admin',now(), #{fileName})]]>
     </insert>
     
