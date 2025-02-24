@@ -1,0 +1,12 @@
+127.0.0.1 - - [24/Feb/2025:15:15:23 +0900] "GET / HTTP/1.1" 404 994
+0:0:0:0:0:0:0:1 - - [24/Feb/2025:15:15:24 +0900] "GET /eGovTest/ HTTP/1.1" 200 6476
+0:0:0:0:0:0:0:1 - - [24/Feb/2025:15:15:24 +0900] "GET /favicon.ico HTTP/1.1" 404 1016
+0:0:0:0:0:0:0:1 - - [24/Feb/2025:15:15:26 +0900] "GET /eGovTest/mainDetail.do?testId=1 HTTP/1.1" 200 4419
+0:0:0:0:0:0:0:1 - - [24/Feb/2025:15:15:46 +0900] "POST /eGovTest/updateMain.do HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [24/Feb/2025:15:15:46 +0900] "GET /eGovTest/mainDetail.do?testId=1 HTTP/1.1" 200 4498
+0:0:0:0:0:0:0:1 - - [24/Feb/2025:15:15:51 +0900] "GET /eGovTest/main.do HTTP/1.1" 200 6476
+0:0:0:0:0:0:0:1 - - [24/Feb/2025:15:15:51 +0900] "GET /eGovTest/mainDetail.do?testId=1 HTTP/1.1" 200 4498
+0:0:0:0:0:0:0:1 - - [24/Feb/2025:15:15:54 +0900] "POST /eGovTest/updateMain.do HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [24/Feb/2025:15:15:54 +0900] "GET /eGovTest/mainDetail.do?testId=1 HTTP/1.1" 200 4419
+0:0:0:0:0:0:0:1 - - [24/Feb/2025:15:15:57 +0900] "GET /eGovTest/main.do HTTP/1.1" 200 6476
+0:0:0:0:0:0:0:1 - - [24/Feb/2025:15:16:26 +0900] "GET /eGovTest/ HTTP/1.1" 200 6476

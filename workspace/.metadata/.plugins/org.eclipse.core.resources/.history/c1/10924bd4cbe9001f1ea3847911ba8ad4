@@ -1,7 +1,0 @@
-package egovframework.example.main.dao;
-
-public interface MainDao {
-
-	public List<MainVo> selectMain(MainVo mainVo) throws Exception;
-	
-}

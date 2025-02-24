@@ -98,11 +98,24 @@ public class MainController {
     		fileName = uuid + "." + ext;
     		
     		try {
-                File uploadDir = new File("C:\\eGovFrameDev-3.10.0-64bit\\workspace\\eGovTest\\articleTest");
-                if (!uploadDir.exists()) {
-                    uploadDir.mkdirs();  // 디렉토리가 없으면 생성
+                // 업로드 디렉토리 경로를 동적으로 설정 (OS에 따라 적절하게 처리)
+                String os = System.getProperty("os.name").toLowerCase();
+                String uploadDirPath;
+
+                if (os.contains("win")) {
+                    // Windows 환경
+                    uploadDirPath = "C:\\eGovFrameDev-3.10.0-64bit\\workspace\\eGovTest\\articleTest";
+                } else {
+                    // Linux/Unix 환경
+                    uploadDirPath = "/home/gsyun/apache-tomcat-8.0.36/webapps/eGovTest/fileUpload";
                 }
 
+                File uploadDir = new File(uploadDirPath);
+                if (!uploadDir.exists()) {
+                    uploadDir.mkdirs(); // 디렉토리가 없으면 생성
+                }
+
+                // 파일 저장
                 uploadFile.transferTo(new File(uploadDir, fileName));
             } catch (IOException e) {
                 e.printStackTrace();
@@ -133,11 +146,24 @@ public class MainController {
     		fileName = uuid + "." + ext;
     		
     		try {
-                File uploadDir = new File("C:\\eGovFrameDev-3.10.0-64bit\\workspace\\eGovTest\\articleTest");
-                if (!uploadDir.exists()) {
-                    uploadDir.mkdirs();
+                // 업로드 디렉토리 경로를 동적으로 설정 (OS에 따라 적절하게 처리)
+                String os = System.getProperty("os.name").toLowerCase();
+                String uploadDirPath;
+
+                if (os.contains("win")) {
+                    // Windows 환경
+                    uploadDirPath = "C:\\eGovFrameDev-3.10.0-64bit\\workspace\\eGovTest\\articleTest";
+                } else {
+                    // Linux/Unix 환경
+                    uploadDirPath = "/home/gsyun/apache-tomcat-8.0.36/webapps/eGovTest/fileUpload";
                 }
 
+                File uploadDir = new File(uploadDirPath);
+                if (!uploadDir.exists()) {
+                    uploadDir.mkdirs(); // 디렉토리가 없으면 생성
+                }
+
+                // 파일 저장
                 uploadFile.transferTo(new File(uploadDir, fileName));
             } catch (IOException e) {
                 e.printStackTrace();
