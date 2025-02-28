@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="egovframework.example.main.service.impl.ReplyMapper">
+	<!-- 댓글 목록 조회 -->
+    <select id="selectReply" parameterType="Integer" resultType="ReplyVO">
+        SELECT *
+        FROM reply
+        WHERE testId = #{testId}
+        ORDER BY replyId DESC
+    </select>
+    INSERT INTO test(testTitle, testContent, testName, testDate, fileName)
+        VALUES(#{testTitle},#{testContent},'admin',now(), #{fileName})
+    <!-- 댓글 등록 -->
+    <insert id="insertReply" parameterType="ReplyVO">
+        INSERT INTO reply (TEST_ID, reply_CONTENT, reply_WRITER, reply_DATE)
+        VALUES (#{testId}, #{commentContent}, #{commentWriter}, NOW())
+    </insert>
+    
+    <!-- 댓글 수정 -->
+    <update id="updateReply" parameterType="ReplyVO">
+        UPDATE TB_reply
+        SET 
+            reply_CONTENT = #{commentContent}
+        WHERE reply_ID = #{commentId}
+    </update>
+    
+    <!-- 댓글 삭제 -->
+    <delete id="deleteReply" parameterType="Integer">
+        DELETE FROM TB_reply
+        WHERE reply_ID = #{commentId}
+    </delete>
+    
+    <!-- 게시글에 달린 모든 댓글 삭제 -->
+    <delete id="deleteReplysByTestId" parameterType="Integer">
+        DELETE FROM TB_reply
+        WHERE TEST_ID = #{testId}
+    </delete>
+</mapper>

@@ -27,30 +27,32 @@ public class MainServiceImpl implements MainService {
  
     // 게시글 등록
     @Override
-    public void insertMain(MainVO mainVo) throws Exception {
+    public void insertMain(MainVO mainVO) throws Exception {
     	
-    	sqlSession.getMapper(MainMapper.class).insertMain(mainVo);
+    	sqlSession.getMapper(MainMapper.class).insertMain(mainVO);
     }
  
     // 게시글 상세 정보 조회
     @Override
-    public MainVO selectDetail(MainVO mainVo) throws Exception {
+    public MainVO selectDetail(MainVO mainVO) throws Exception {
         
-    	return sqlSession.getMapper(MainMapper.class).selectDetail(mainVo);
+    	return sqlSession.getMapper(MainMapper.class).selectDetail(mainVO);
     }
  
     // 게시글 정보 업데이트
     @Override
-    public void updateMain(MainVO mainVo) throws Exception {
+    public void updateMain(MainVO mainVO) throws Exception {
         
-    	sqlSession.getMapper(MainMapper.class).updateMain(mainVo);
+    	sqlSession.getMapper(MainMapper.class).updateMain(mainVO);
     }
  
     // 게시글 삭제
     @Override
-    public void deleteMain(MainVO mainVo) throws Exception {
-        
-    	sqlSession.getMapper(MainMapper.class).deleteMain(mainVo);
+    public void deleteMain(MainVO mainVO) throws Exception {
+    	// 게시글에 달린 댓글 먼저 삭제
+    	sqlSession.getMapper(CommentMapper.class).deleteCommentsByTestId(mainVO.getTestId());
+        // 게시글 삭제
+    	sqlSession.getMapper(MainMapper.class).deleteMain(mainVO);
     }
 	
     // 전체 게시글 개수 조회
@@ -62,9 +64,9 @@ public class MainServiceImpl implements MainService {
     
     // 게시글 내 파일 삭제
     @Override
-    public boolean deleteFile(MainVO mainVo) throws Exception {
+    public boolean deleteFile(MainVO mainVO) throws Exception {
     	
         // 해당 파일명을 가진 게시글을 찾아 fileName 필드를 null로 설정
-    	return sqlSession.getMapper(MainMapper.class).updateFileToNull(mainVo) > 0;
+    	return sqlSession.getMapper(MainMapper.class).updateFileToNull(mainVO) > 0;
     }
 }

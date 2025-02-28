@@ -382,7 +382,7 @@
 
   <!-- The servlet mappings for the built in servlets defined above.  Note  -->
   <!-- that, by default, the CGI and SSI servlets are *not* mapped.  You    -->
-  <!-- must uncomment these mappings (or add them to your application's own -->
+  <!-- must unreply these mappings (or add them to your application's own -->
   <!-- web.xml deployment descriptor) to enable these services              -->
 
     <!-- The mapping for the default servlet -->
@@ -494,7 +494,7 @@
   <!-- servers like Apache.  Traditionally, this filter is mapped to the    -->
   <!-- URL pattern "*.shtml", though it can be mapped to "*" as it will     -->
   <!-- selectively enable/disable SSI processing based on mime types. For   -->
-  <!-- this to work you will need to uncomment the .shtml mime type         -->
+  <!-- this to work you will need to unreply the .shtml mime type         -->
   <!-- definition towards the bottom of this file.                          -->
   <!-- The contentType init param allows you to apply SSI processing to JSP -->
   <!-- pages, javascript, or any other content you wish.  This filter       -->

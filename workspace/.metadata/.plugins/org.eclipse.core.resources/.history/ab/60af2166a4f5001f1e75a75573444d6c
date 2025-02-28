@@ -1,0 +1,36 @@
+package egovframework.example.main.service.impl;
+
+import java.util.List;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import egovframework.example.main.service.ReplyVO;
+
+@Service
+public class ReplyServiceImpl {
+	@Autowired
+    private SqlSession sqlSession;
+    
+    @Override
+    public List<ReplyVO> selectReply(int testId) throws Exception {
+        return sqlSession.getMapper(ReplyMapper.class).selectReply(testId);
+    }
+    
+    @Override
+    public void insertReply(ReplyVO replyVO) throws Exception {
+        sqlSession.getMapper(ReplyMapper.class).insertReply(replyVO);
+    }
+    
+    @Override
+    public void updateReply(ReplyVO replyVO) throws Exception {
+        sqlSession.getMapper(ReplyMapper.class).updateReply(replyVO);
+    }
+    
+    @Override
+    public void deleteReply(int replyId) throws Exception {
+        sqlSession.getMapper(ReplyMapper.class).deleteReply(replyId);
+    }
+	
+}

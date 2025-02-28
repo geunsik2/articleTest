@@ -7,14 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Board List</title>
     
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
-    
     <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="js/jquery-3.7.1.min.js"></script>
+    
+    <!-- Bootstrap CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">    
     
     <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
     
     <style>
         a { text-decoration: none; }
@@ -24,33 +24,44 @@
 </head>
 <body>
     <div class="container mt-4">
+        <!-- 페이지 제목 -->
         <h1 class="text-center">Board List</h1>
         
-        <!-- 검색 및 글쓰기 -->
         <div class="d-flex align-items-center justify-content-between mb-4 search-bar">
-            <form id="searchForm" class="d-flex align-items-center">
-                <div class="col-auto" style="padding-right: 10px">
-                    <select class="form-select form-select-sm" name="searchType" id="searchType">
-                        <option value="testTitle">제목</option>
-                        <option value="testContent">내용</option>
-                        <option value="testName">작성자</option>
-                    </select>
-                </div>
-
-                <div class="col-auto" style="padding-right: 10px">
-                    <input type="text" class="form-control form-control-sm" name="keyword" id="keyword" placeholder="검색어 입력">
-                </div>
-
-                <div class="col-auto">
-                    <button type="button" id="btnSearch" class="btn btn-sm btn-primary">검색</button>
-                </div>
-            </form>
-
-            <a class="btn btn-outline-info" href="mainRegister.do">글쓰기</a>
+        	<!-- 검색 기능 -->
+	        <form id="searchForm" class="d-flex align-items-center">
+	            <!-- 검색 유형 선택 -->
+	            <div class="col-auto" style="padding-right: 10px">
+	                <select class="form-select form-select-sm" name="searchType" id="searchType">
+	                    <option value="testTitle">제목</option>
+	                    <option value="testContent">내용</option>
+	                    <option value="testName">작성자</option>
+	                </select>
+	            </div>
+	
+	            <!-- 검색어 입력 -->
+	            <div class="col-auto" style="padding-right: 10px">
+	                <input type="text" class="form-control form-control-sm" name="keyword" id="keyword" placeholder="검색어 입력">
+	            </div>
+	
+	            <!-- 검색 버튼 -->
+	            <div class="col-auto">
+	                <button type="button" id="btnSearch" class="btn btn-primary btn-sm">검색</button>
+	            </div>
+	        </form>
+	        
+	        <!-- 글쓰기 버튼 -->
+	        <a class="btn btn-outline-info" href="mainRegister.do">글쓰기</a>
         </div>        
         
         <!-- 게시글 목록 테이블 -->
-        <table id="boardTable" class="table table-hover table-striped text-center border mt-4">
+        <table class="table table-hover table-striped text-center border mt-4">
+            <colgroup>
+                <col width="10%">
+                <col width="50%">
+                <col width="20%">
+                <col width="20%">
+            </colgroup>
             <thead>
                 <tr>
                     <th>번호</th>
@@ -59,61 +70,163 @@
                     <th>등록일자</th>
                 </tr>
             </thead>
-            <tbody id="boardBody"></tbody>
+            <tbody>
+                <!-- 게시글이 없으면 예외 메시지 출력 -->
+                <c:if test="${empty list}">
+                    <tr>
+                        <td colspan="4">표시할 게시글이 없습니다.</td>
+                    </tr>
+                </c:if>
+
+                <!-- JSTL을 사용하여 게시글 반복 출력 -->
+                <c:forEach items="${list}" var="result">
+                    <tr>
+                        <td>${result.testId}</td>
+                        <td><a href="mainDetail.do?testId=${result.testId}">${result.testTitle}</a></td>
+                        <td>${result.testName}</td>
+                        <td>${result.testDate}</td>
+                    </tr>
+                </c:forEach>
+            </tbody>
         </table>
 
         <!-- 페이지네이션 -->
-        <div id="paginationBox" class="pagination justify-content-center my-4"></div> 
+        <div id="paginationBox" class="pagination justify-content-center my-4">
+            <!-- 이전 페이지 버튼 -->
+            <c:if test="${pagination.prev}">
+                <li class="page-item"><a class="page-link" href="#" onClick="fn_prev('${pagination.page}', '${pagination.range}', '${pagination.rangeSize}', '${pagination.listSize}', '${search.searchType}', '${search.keyword}')">이전</a></li>
+            </c:if>
+
+            <!-- 페이지 번호 버튼 -->
+            <c:forEach begin="${pagination.startPage}" end="${pagination.endPage}" var="testId">
+                <li class="page-item ${pagination.page == testId ? 'active' : ''}">
+                    <a class="page-link" href="#" onClick="fn_pagination('${testId}', '${pagination.range}', '${pagination.rangeSize}', '${pagination.listSize}', '${search.searchType}', '${search.keyword}')">${testId}</a>
+                </li>
+            </c:forEach>
+
+            <!-- 다음 페이지 버튼 -->
+            <c:if test="${pagination.next}">
+                <li class="page-item"><a class="page-link" href="#" onClick="fn_next('${pagination.page}', '${pagination.range}', '${pagination.rangeSize}', '${pagination.listSize}', '${search.searchType}', '${search.keyword}')">다음</a></li>
+            </c:if>
+        </div>
     </div>
-
-    <!-- JavaScript for Ajax -->
-    <script type="text/javascript">
-
-        // 게시글 목록 및 페이지네이션 로드 함수
-        function loadBoard(page = 1, range = 1, searchType = '', keyword = '') {
-            $.ajax({
-                url: 'main.do',
-                type: 'POST',
-                data: {
-                    page: page,
-                    range: range,
-                    searchType: searchType,
-                    keyword: keyword
-                },
-                success: function(response) {
-                    $('#boardBody').html(response.boardHtml); // 게시글 목록
-                    $('#paginationBox').html(response.paginationHtml); // 페이지네이션
-                },
-                error: function(xhr, status, error) {
-                    console.error('Error:', error);
-                    alert('게시글을 불러오는 중 오류가 발생했습니다.');
-                }
-            });
-        }
-
-        // 초기 로드
-        $(document).ready(function() {
-            loadBoard(); // 기본값으로 첫 번째 페이지 로드
-        });
-
-        // 검색 버튼 클릭 이벤트
-        $('#btnSearch').on('click', function() {
-            const searchType = $('#searchType').val();
-            const keyword = $('#keyword').val();
-            loadBoard(1, 1, searchType, keyword); // 첫 페이지부터 검색 결과 로드
-        });
-
-        // 페이지네이션 클릭 이벤트 (동적 생성된 요소에 이벤트 바인딩)
-        $(document).on('click', '.page-link', function(e) {
-            e.preventDefault();
-            const page = $(this).data('page');
-            const range = $(this).data('range');
-            const searchType = $('#searchType').val();
-            const keyword = $('#keyword').val();
-            loadBoard(page, range, searchType, keyword);
-        });
-
-    </script>
-
 </body>
+<script type="text/javascript">
+    // 이전 버튼 이벤트
+	function fn_prev(page, range, rangeSize, listSize, searchType, keyword) {
+	    page = ((range - 2) * rangeSize) + 1;
+	    range = range - 1;
+	
+	    var data = {
+	        page: page,
+	        range: range,
+	        listSize: listSize,
+	        searchType: searchType,
+	        keyword: keyword
+	    };
+	
+	    $.ajax({
+	        type: "POST",
+	        url: "main.do",
+	        data: data,
+	        success: function(response) {
+	            document.open();
+	            document.write(response);
+	            document.close();
+	        },
+	        error: function(error) {
+	            console.error("Error:", error);
+	        }
+	    });
+	}
+    
+	// 다음 버튼 이벤트
+	function fn_next(page, range, rangeSize, listSize, searchType, keyword) {
+	    page = parseInt(range * rangeSize) + 1;
+	    range = parseInt(range) + 1;
+	
+	    var data = {
+	        page: page,
+	        range: range,
+	        listSize: listSize,
+	        searchType: searchType,
+	        keyword: keyword
+	    };
+	
+	    $.ajax({
+	        type: "POST",
+	        url: "main.do",
+	        data: data,
+	        success: function(response) {
+	            document.open();
+	            document.write(response);
+	            document.close();
+	        },
+	        error: function(error) {
+	            console.error("Error:", error);
+	        }
+	    });
+	}
+
+    // 페이지 번호 클릭
+    function fn_pagination(page, range, rangeSize, listSize, searchType, keyword) {
+        var data = {
+            page: page,
+            range: range,
+            listSize: listSize,
+            searchType: searchType,
+            keyword: keyword
+        };
+
+        $.ajax({
+            type: "POST",
+            url: "main.do",
+            data: data,
+            success: function(response) {
+                document.open();
+                document.write(response);
+                document.close();
+            },
+            error: function(error) {
+                console.error("Error:", error);
+            }
+        });
+    }
+ 
+    // 검색 수행 함수
+    function searchArticle() {
+        var data = {
+            searchType: $("#searchType").val(),
+            keyword: $("#keyword").val()
+        };
+
+        $.ajax({
+            type: "POST",
+            url: "main.do",
+            data: data,
+            success: function(response) {
+                document.open();
+                document.write(response);
+                document.close();
+            },
+            error: function(error) {
+                console.error("Error:", error);
+            }
+        });
+    }
+
+    // 검색
+    $(document).on("click", "#btnSearch", function (e) {
+    	e.preventDefault();
+    	searchArticle(); // 검색 수행 함수 호출
+    });
+    
+ 	// 검색어 입력 후 엔터키 이벤트
+    $(document).on("keypress", "#keyword", function (e) {
+        if (e.key === "Enter") {
+            e.preventDefault();
+            searchArticle();
+        }
+    });
+</script>
 </html>

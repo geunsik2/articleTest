@@ -93,7 +93,7 @@ grant codeBase "file:${catalina.home}/bin/tomcat-juli.jar" {
         // Note: To enable per context logging configuration, permit read access to
         // the appropriate file. Be sure that the logging configuration is
         // secure before enabling such access.
-        // E.g. for the examples web application (uncomment and unwrap
+        // E.g. for the examples web application (unreply and unwrap
         // the following to be on a single line):
         // permission java.io.FilePermission "${catalina.base}${file.separator}
         //  webapps${file.separator}examples${file.separator}WEB-INF
@@ -114,7 +114,7 @@ grant codeBase "file:${catalina.home}/lib/-" {
 
 
 // If using a per instance lib directory, i.e. ${catalina.base}/lib,
-// then the following permission will need to be uncommented
+// then the following permission will need to be unreplyed
 // grant codeBase "file:${catalina.base}/lib/-" {
 //         permission java.security.AllPermission;
 // };

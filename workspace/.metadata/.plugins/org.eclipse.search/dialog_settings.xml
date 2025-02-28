@@ -20,7 +20,7 @@
 		</list>
 	</section>
 	<section name="SearchDialog.ScopePart">
-		<item key="scope" value="0"/>
+		<item key="scope" value="1"/>
 	</section>
 	<section name="DialogBounds_SearchDialog">
 		<item key="DIALOG_X_ORIGIN" value="878"/>
@@ -43,8 +43,8 @@
 			<item key="ignoreCase" value="false"/>
 			<item key="isRegExSearch" value="false"/>
 			<item key="isWholeWord" value="false"/>
-			<item key="textPattern" value="navbar"/>
-			<item key="scope" value="0"/>
+			<item key="textPattern" value="reply"/>
+			<item key="scope" value="1"/>
 			<list key="fileNamePatterns">
 				<item value="*"/>
 			</list>
@@ -55,8 +55,8 @@
 			<item key="ignoreCase" value="false"/>
 			<item key="isRegExSearch" value="false"/>
 			<item key="isWholeWord" value="false"/>
-			<item key="textPattern" value="media"/>
-			<item key="scope" value="0"/>
+			<item key="textPattern" value="selectComment"/>
+			<item key="scope" value="1"/>
 			<list key="fileNamePatterns">
 				<item value="*"/>
 			</list>
@@ -67,8 +67,8 @@
 			<item key="ignoreCase" value="false"/>
 			<item key="isRegExSearch" value="false"/>
 			<item key="isWholeWord" value="false"/>
-			<item key="textPattern" value="data-toggle"/>
-			<item key="scope" value="0"/>
+			<item key="textPattern" value="Reply"/>
+			<item key="scope" value="1"/>
 			<list key="fileNamePatterns">
 				<item value="*"/>
 			</list>
@@ -79,8 +79,8 @@
 			<item key="ignoreCase" value="false"/>
 			<item key="isRegExSearch" value="false"/>
 			<item key="isWholeWord" value="false"/>
-			<item key="textPattern" value="no-gutters"/>
-			<item key="scope" value="0"/>
+			<item key="textPattern" value="mainVo"/>
+			<item key="scope" value="1"/>
 			<list key="fileNamePatterns">
 				<item value="*"/>
 			</list>
@@ -91,7 +91,7 @@
 			<item key="ignoreCase" value="false"/>
 			<item key="isRegExSearch" value="false"/>
 			<item key="isWholeWord" value="false"/>
-			<item key="textPattern" value="data-target"/>
+			<item key="textPattern" value="comment"/>
 			<item key="scope" value="0"/>
 			<list key="fileNamePatterns">
 				<item value="*"/>
@@ -103,7 +103,7 @@
 			<item key="ignoreCase" value="false"/>
 			<item key="isRegExSearch" value="false"/>
 			<item key="isWholeWord" value="false"/>
-			<item key="textPattern" value="collapse"/>
+			<item key="textPattern" value="Comment"/>
 			<item key="scope" value="0"/>
 			<list key="fileNamePatterns">
 				<item value="*"/>
@@ -115,7 +115,7 @@
 			<item key="ignoreCase" value="false"/>
 			<item key="isRegExSearch" value="false"/>
 			<item key="isWholeWord" value="false"/>
-			<item key="textPattern" value="dismiss"/>
+			<item key="textPattern" value="COMMENT"/>
 			<item key="scope" value="0"/>
 			<list key="fileNamePatterns">
 				<item value="*"/>
@@ -127,7 +127,7 @@
 			<item key="ignoreCase" value="false"/>
 			<item key="isRegExSearch" value="false"/>
 			<item key="isWholeWord" value="false"/>
-			<item key="textPattern" value="divider"/>
+			<item key="textPattern" value="commentVO"/>
 			<item key="scope" value="0"/>
 			<list key="fileNamePatterns">
 				<item value="*"/>
@@ -139,7 +139,7 @@
 			<item key="ignoreCase" value="false"/>
 			<item key="isRegExSearch" value="false"/>
 			<item key="isWholeWord" value="false"/>
-			<item key="textPattern" value="dropdown"/>
+			<item key="textPattern" value="CommentVO"/>
 			<item key="scope" value="0"/>
 			<list key="fileNamePatterns">
 				<item value="*"/>
@@ -151,7 +151,7 @@
 			<item key="ignoreCase" value="false"/>
 			<item key="isRegExSearch" value="false"/>
 			<item key="isWholeWord" value="false"/>
-			<item key="textPattern" value="help-block"/>
+			<item key="textPattern" value="level"/>
 			<item key="scope" value="0"/>
 			<list key="fileNamePatterns">
 				<item value="*"/>
@@ -163,7 +163,7 @@
 			<item key="ignoreCase" value="false"/>
 			<item key="isRegExSearch" value="false"/>
 			<item key="isWholeWord" value="false"/>
-			<item key="textPattern" value="form-control"/>
+			<item key="textPattern" value="navbar"/>
 			<item key="scope" value="0"/>
 			<list key="fileNamePatterns">
 				<item value="*"/>
@@ -175,7 +175,7 @@
 			<item key="ignoreCase" value="false"/>
 			<item key="isRegExSearch" value="false"/>
 			<item key="isWholeWord" value="false"/>
-			<item key="textPattern" value="xs"/>
+			<item key="textPattern" value="media"/>
 			<item key="scope" value="0"/>
 			<list key="fileNamePatterns">
 				<item value="*"/>
@@ -192,13 +192,12 @@
 	</section>
 	<section name="ReplaceDialog2">
 		<list key="replace_with">
-			<item value="float-end"/>
+			<item value="comment"/>
+			<item value="Comment"/>
 			<item value="mainVO"/>
-			<item value="Main"/>
-			<item value="mainVo"/>
-			<item value="MainVo"/>
-			<item value="MainMapper"/>
-			<item value="mainDao"/>
+			<item value="reply"/>
+			<item value="Reply"/>
+			<item value="replyVO"/>
 		</list>
 	</section>
 	<section name="">

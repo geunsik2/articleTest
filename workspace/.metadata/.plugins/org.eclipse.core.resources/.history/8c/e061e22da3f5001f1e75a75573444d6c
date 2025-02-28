@@ -1,0 +1,6 @@
+package egovframework.example.main.service;
+
+public interface ReplyService {
+	// 특정 게시글의 댓글 조회
+
+}

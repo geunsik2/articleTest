@@ -1,0 +1,9 @@
+package egovframework.example.main.service;
+
+public class ReplyVO {
+	private int replyId;        // 댓글 ID
+    private int testId;           // 연결된 게시글 ID
+    private String replyContent; // 댓글 내용
+    private String replyName;  // 댓글 작성자
+    private Date replyDate;      // 댓글 작성일
+}

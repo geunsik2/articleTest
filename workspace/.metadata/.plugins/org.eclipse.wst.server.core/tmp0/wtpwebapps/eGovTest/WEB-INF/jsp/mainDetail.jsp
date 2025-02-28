@@ -68,6 +68,52 @@
                 </tbody>
             </table>
         </form>
+        <!-- 댓글 영역 -->
+		<div class="comment-section mt-5">
+		    <h3>댓글</h3>
+		    
+		    <!-- 댓글 목록 -->
+		    <div id="commentList" class="mb-4">
+		        <c:choose>
+		            <c:when test="${empty commentList}">
+		                <p class="text-center">등록된 댓글이 없습니다.</p>
+		            </c:when>
+		            <c:otherwise>
+		                <c:forEach items="${commentList}" var="comment">
+		                    <div class="card mb-2">
+		                        <div class="card-body">
+		                            <div class="d-flex justify-content-between">
+		                                <h5 class="card-title">${comment.commentName}</h5>
+		                                <small class="text-muted">${comment.commentDate}</small>
+		                            </div>
+		                            <p class="card-text">${comment.commentContent}</p>
+		                            <div class="text-end">
+		                                <button type="button" class="btn btn-sm btn-outline-primary btn-edit-comment" data-comment-id="${comment.commentId}">수정</button>
+		                                <button type="button" class="btn btn-sm btn-outline-danger btn-delete-comment" data-comment-id="${comment.commentId}">삭제</button>
+		                            </div>
+		                        </div>
+		                    </div>
+		                </c:forEach>
+		            </c:otherwise>
+		        </c:choose>
+		    </div>
+		    
+		    <!-- 댓글 입력 폼 -->
+		    <div class="comment-form">
+		        <form id="commentForm">
+		            <input type="hidden" name="testId" value="${vo.testId}" />
+		            <div class="form-group mb-2">
+		                <label for="commentName">작성자</label>
+		                <input type="text" class="form-control" id="commentName" name="commentName" required>
+		            </div>
+		            <div class="form-group mb-2">
+		                <label for="commentContent">내용</label>
+		                <textarea class="form-control" id="commentContent" name="commentContent" rows="3" required></textarea>
+		            </div>
+		            <button type="button" id="btn_comment_submit" class="btn btn-primary">댓글 등록</button>
+		        </form>
+		    </div>
+		</div>
     </div>
 
     <!-- JavaScript -->
@@ -155,7 +201,137 @@
 		        });
 		    }
 		});
-
+		
+		// 댓글 목록 새로고침 함수
+	    function refreshCommentList() {
+	        $.ajax({
+	            type: "GET",
+	            url: "getCommentList.do",
+	            data: { testId: ${vo.testId} },
+	            dataType: "json",
+	            success: function(commentList) {
+	                let html = '';
+	                
+	                if(commentList.length === 0) {
+	                    html = '<p class="text-center">등록된 댓글이 없습니다.</p>';
+	                } else {
+	                    for(let i = 0; i < commentList.length; i++) {
+	                        let comment = commentList[i];
+	                        html += '<div class="card mb-2">';
+	                        html += '  <div class="card-body">';
+	                        html += '    <div class="d-flex justify-content-between">';
+	                        html += '      <h5 class="card-title">' + comment.commentName + '</h5>';
+	                        html += '      <small class="text-muted">' + comment.commentDate + '</small>';
+	                        html += '    </div>';
+	                        html += '    <p class="card-text">' + comment.commentContent + '</p>';
+	                        html += '    <div class="text-end">';
+	                        html += '      <button type="button" class="btn btn-sm btn-outline-primary btn-edit-comment" data-comment-id="' + comment.commentId + '">수정</button>';
+	                        html += '      <button type="button" class="btn btn-sm btn-outline-danger btn-delete-comment" data-comment-id="' + comment.commentId + '">삭제</button>';
+	                        html += '    </div>';
+	                        html += '  </div>';
+	                        html += '</div>';
+	                    }
+	                }
+	                
+	                $('#commentList').html(html);
+	            },
+	            error: function(error) {
+	                console.error("Error:", error);
+	            }
+	        });
+	    }
+	    
+	    // 댓글 등록
+	    $('#btn_comment_submit').on('click', function () {
+	        const writer = $('#commentName').val();
+	        const content = $('#commentContent').val();
+	        
+	        if(!writer.trim()) {
+	            alert("작성자를 입력하세요.");
+	            return;
+	        }
+	        
+	        if(!content.trim()) {
+	            alert("댓글 내용을 입력하세요.");
+	            return;
+	        }
+	        
+	        $.ajax({
+	            type: "POST",
+	            url: "insertComment.do",
+	            data: $('#commentForm').serialize(),
+	            success: function(response) {
+	                if(response === 'success') {
+	                    alert("댓글이 등록되었습니다.");
+	                    $('#commentName').val('');
+	                    $('#commentContent').val('');
+	                    refreshCommentList();
+	                } else {
+	                    alert("댓글 등록에 실패했습니다.");
+	                }
+	            },
+	            error: function(error) {
+	                console.error("Error:", error);
+	                alert("댓글 등록 중 오류가 발생했습니다.");
+	            }
+	        });
+	    });
+	    
+	    // 댓글 수정
+	    $(document).on('click', '.btn-edit-comment', function() {
+	        const commentId = $(this).data('comment-id');
+	        const commentText = $(this).closest('.card-body').find('.card-text').text();
+	        
+	        const newContent = prompt("댓글을 수정해주세요:", commentText);
+	        
+	        if(newContent !== null && newContent.trim() !== '') {
+	            $.ajax({
+	                type: "POST",
+	                url: "updateComment.do",
+	                data: {
+	                    commentId: commentId,
+	                    commentContent: newContent
+	                },
+	                success: function(response) {
+	                    if(response === 'success') {
+	                        alert("댓글이 수정되었습니다.");
+	                        refreshCommentList();
+	                    } else {
+	                        alert("댓글 수정에 실패했습니다.");
+	                    }
+	                },
+	                error: function(error) {
+	                    console.error("Error:", error);
+	                    alert("댓글 수정 중 오류가 발생했습니다.");
+	                }
+	            });
+	        }
+	    });
+	    
+	    // 댓글 삭제
+	    $(document).on('click', '.btn-delete-comment', function() {
+	        const commentId = $(this).data('comment-id');
+	        
+	        if(confirm("정말 이 댓글을 삭제하시겠습니까?")) {
+	            $.ajax({
+	                type: "POST",
+	                url: "deleteComment.do",
+	                data: { commentId: commentId },
+	                success: function(response) {
+	                    if(response === 'success') {
+	                        alert("댓글이 삭제되었습니다.");
+	                        refreshCommentList();
+	                    } else {
+	                        alert("댓글 삭제에 실패했습니다.");
+	                    }
+	                },
+	                error: function(error) {
+	                    console.error("Error:", error);
+	                    alert("댓글 삭제 중 오류가 발생했습니다.");
+	                }
+	            });
+	        }
+	    });
     </script>
 </body>
 </html>

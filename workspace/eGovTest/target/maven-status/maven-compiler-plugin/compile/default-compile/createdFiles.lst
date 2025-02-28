@@ -1,4 +1,5 @@
 egovframework\example\main\service\MainDefaultVO.class
+egovframework\example\main\service\ReplyVO.class
 egovframework\example\main\service\impl\MainMapper.class
 egovframework\example\main\service\impl\MainServiceImpl.class
 egovframework\example\cmmn\web\EgovBindingInitializer.class
@@ -8,3 +9,4 @@ egovframework\example\cmmn\EgovSampleExcepHndlr.class
 egovframework\example\cmmn\EgovSampleOthersExcepHndlr.class
 egovframework\example\cmmn\web\EgovImgPaginationRenderer.class
 egovframework\example\main\controller\MainController.class
+egovframework\example\main\service\impl\ReplyMapper.class

@@ -19,3 +19,8 @@
 1740643914507	Delete elements
 1740643927634	Delete elements
 1740699829076	Delete element
+1740728042102	Rename type 'ReplyVO'
+1740728095727	Rename type 'ReplyMapper'
+1740728188711	Rename resource 'ReplyMapper.xml'
+1740728327351	Rename type 'ReplyService'
+1740728382172	Rename type 'ReplyServiceImpl'

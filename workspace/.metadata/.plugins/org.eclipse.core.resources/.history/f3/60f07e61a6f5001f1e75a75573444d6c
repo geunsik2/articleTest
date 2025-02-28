@@ -1,0 +1,42 @@
+package egovframework.example.main.service;
+
+// 댓글 데이터를 자바 객체로 다루기 위한 VO 클래스
+// 댓글의 속성을 정의하며, 테이블의 각 컬럼에 대응된다.
+public class ReplyVO {
+	private int replyId;        	// 댓글 ID
+    private int testId;           	// 연결된 게시글 ID
+    private String replyContent; 	// 댓글 내용
+    private String replyName;  		// 댓글 작성자
+    private String replyDate;     	// 댓글 작성일
+    
+	public int getReplyId() {
+		return replyId;
+	}
+	public void setReplyId(int replyId) {
+		this.replyId = replyId;
+	}
+	public int getTestId() {
+		return testId;
+	}
+	public void setTestId(int testId) {
+		this.testId = testId;
+	}
+	public String getReplyContent() {
+		return replyContent;
+	}
+	public void setReplyContent(String replyContent) {
+		this.replyContent = replyContent;
+	}
+	public String getReplyName() {
+		return replyName;
+	}
+	public void setReplyName(String replyName) {
+		this.replyName = replyName;
+	}
+	public String getReplyDate() {
+		return replyDate;
+	}
+	public void setReplyDate(String replyDate) {
+		this.replyDate = replyDate;
+	}
+}

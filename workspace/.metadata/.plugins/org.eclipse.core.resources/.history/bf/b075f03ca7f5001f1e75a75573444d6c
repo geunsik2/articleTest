@@ -1,0 +1,38 @@
+package egovframework.example.main.service.impl;
+
+import java.util.List;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import egovframework.example.main.service.CommentService;
+import egovframework.example.main.service.CommentVO;
+
+// 서비스 구현 클래스는 실제 비즈니스 로직을 처리하며, SqlSession을 통해 매퍼와 상호작용한다.
+@Service
+public class CommentServiceImpl implements CommentService {
+	@Autowired
+    private SqlSession sqlSession;
+    
+    @Override
+    public List<CommentVO> selectReply(int testId) throws Exception {
+        return sqlSession.getMapper(CommentMapper.class).selectReply(testId);
+    }
+    
+    @Override
+    public void insertReply(CommentVO replyVO) throws Exception {
+        sqlSession.getMapper(CommentMapper.class).insertReply(replyVO);
+    }
+    
+    @Override
+    public void updateReply(CommentVO replyVO) throws Exception {
+        sqlSession.getMapper(CommentMapper.class).updateReply(replyVO);
+    }
+    
+    @Override
+    public void deleteReply(int replyId) throws Exception {
+        sqlSession.getMapper(CommentMapper.class).deleteReply(replyId);
+    }
+	
+}

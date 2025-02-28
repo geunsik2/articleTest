@@ -1,0 +1,23 @@
+package egovframework.example.main.service.impl;
+
+import java.util.List;
+
+import egovframework.example.main.service.ReplyVO;
+
+// 댓글 CRUD 작업에 필요한 메서드를 정의한다.
+public interface ReplyMapper {
+	// 특정 게시글의 댓글을 조회합니다.
+    List<ReplyVO> selectReply(int testId) throws Exception;
+    
+    // 새로운 댓글을 등록합니다.
+    void insertReply(ReplyVO replyVO) throws Exception;
+    
+    // 댓글을 수정합니다.
+    void updateReply(ReplyVO replyVO) throws Exception;
+    
+    // 댓글을 삭제합니다.
+    void deleteReply(int commentId) throws Exception;
+    
+    // 게시글에 달린 모든 댓글을 삭제합니다. (게시글 삭제시 사용)
+    void deleteReplysByTestId(int testId) throws Exception;
+}

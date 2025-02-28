@@ -1,0 +1,28 @@
+package egovframework.example.main.service.impl;
+
+@Service
+public class ReplyServiceImpl {
+	@Autowired
+    private SqlSession sqlSession;
+    
+    @Override
+    public List<CommentVO> selectCommentList(int testId) throws Exception {
+        return sqlSession.getMapper(CommentMapper.class).selectCommentList(testId);
+    }
+    
+    @Override
+    public void insertComment(CommentVO commentVO) throws Exception {
+        sqlSession.getMapper(CommentMapper.class).insertComment(commentVO);
+    }
+    
+    @Override
+    public void updateComment(CommentVO commentVO) throws Exception {
+        sqlSession.getMapper(CommentMapper.class).updateComment(commentVO);
+    }
+    
+    @Override
+    public void deleteComment(int commentId) throws Exception {
+        sqlSession.getMapper(CommentMapper.class).deleteComment(commentId);
+    }
+	
+}
