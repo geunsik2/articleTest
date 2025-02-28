@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="egovframework.example.main.service.impl.MainMapper">
+	
+	<!-- 게시글 목록 조회 -->
+	<select id="selectMain" resultType="MainVo">
+		SELECT * FROM test
+		<where>
+			<if test="searchType=='testTitle' and keyword != null and keyword !=''">
+			    AND testTitle like CONCAT('%',#{keyword},'%')
+			</if>
+			<if test="searchType=='testContent' and keyword != null and keyword !=''">
+			    AND testContent like CONCAT('%',#{keyword},'%')
+			</if>
+			<if test="searchType=='testName' and keyword != null and keyword !=''">
+			    AND testName like CONCAT('%',#{keyword},'%')
+			</if>
+		</where>
+    	ORDER BY testId DESC
+    	LIMIT #{startList}, #{listSize}
+    </select>
+    
+    <!-- 게시글 개수  -->
+    <select id="getBoardListCnt" resultType="Integer">
+    	SELECT COUNT(*) AS listCnt
+    	FROM test
+    	<where>
+        <if test="keyword != null and keyword != ''">
+            <if test="searchType=='testTitle'">
+                AND testTitle like CONCAT('%',#{keyword},'%')
+            </if>
+            <if test="searchType=='testContent'">
+                AND testContent like CONCAT('%',#{keyword},'%')
+            </if>
+            <if test="searchType=='testName'">
+                AND testName like CONCAT('%',#{keyword},'%')
+            </if>
+        </if>
+    </where>
+    </select>
+    
+    <!-- 게시글 상세보기 -->
+    <select id="selectDetail" parameterType="Integer" resultType="MainVo">
+        SELECT * FROM test
+        WHERE testId = #{testId}
+    </select>
+    
+    <!-- 게시글 삽입 -->
+    <insert id="insertMain" parameterType="MainVo">
+    	<![CDATA[INSERT INTO test(testTitle, testContent, testName, testDate, fileName)
+        VALUES(#{testTitle},#{testContent},'admin',now(), #{fileName})]]>
+    </insert>
+    
+    <!-- 게시글 수정 -->
+    <update id="updateMain" parameterType="MainVo">
+        UPDATE test SET
+        testTitle = #{testTitle}, testContent = #{testContent}, fileName = #{fileName}
+        WHERE testId = #{testId}
+    </update>
+    
+    <!-- 게시글 삭제 -->
+    <delete id="deleteMain" parameterType="Integer">
+        DELETE FROM test
+        WHERE testId = #{testId}
+    </delete>
+	
+	<!-- 파일 삭제 -->
+	<update id="updateFileToNull" parameterType="string">
+	    UPDATE test SET
+	    fileName = NULL
+	    WHERE fileName = #{fileName}
+	</update>
+</mapper>

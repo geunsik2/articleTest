@@ -1,0 +1,36 @@
+<script>
+$(document).ready(function () {
+    $("#btnSearch").click(function () {
+        const data = {
+            searchType: $("#searchType").val(),
+            keyword: $("#keyword").val()
+        };
+
+        $.ajax({
+            type: "POST",
+            url: "mainSearchAjax.do",
+            contentType: "application/json",
+            data: JSON.stringify(data),
+            success: function (response) {
+                renderTable(response);
+            },
+            error: function () {
+                alert("검색 중 오류가 발생했습니다.");
+            }
+        });
+    });
+
+    function renderTable(data) {
+        let rows = "";
+        data.forEach(item => {
+            rows += `<tr>
+                        <td>${item.testId}</td>
+                        <td><a href="mainDetail.do?testId=${item.testId}">${item.testTitle}</a></td>
+                        <td>${item.testName}</td>
+                        <td>${item.testDate}</td>
+                     </tr>`;
+        });
+        $("tbody").html(rows);
+    }
+});
+</script>

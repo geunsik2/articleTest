@@ -1,0 +1,43 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<table class="table">
+<thead>
+<tr>
+<th>번호</th><th>제목</th><th>작성자</th><th>등록일자</th>
+</tr>
+</thead>
+<tbody>
+<c:forEach items="${list}" var="result">
+<tr>
+<td>${result.testId}</td><td>${result.testTitle}</td><td>${result.testName}</td><td>${result.testDate}</td>
+</tr>
+</c:forEach>
+</tbody>
+</table>
+
+<!-- 페이징 -->
+<div class="pagination">
+<c:if test="${pagination.prev}">
+<button onclick="loadPage(${pagination.page - 1})">이전</button>
+</c:if>
+
+<c:forEach begin="${pagination.startPage}" end="${pagination.endPage}" var="pageNum">
+<button onclick="loadPage(${pageNum})">${pageNum}</button>
+</c:forEach>
+
+<c:if test="${pagination.next}">
+<button onclick="loadPage(${pagination.page + 1})">다음</button>
+</c:if>
+</div>
+
+<script>
+function loadPage(page) {
+   $.ajax({
+       type: "POST",
+       url: "mainAjax.do",
+       data: { page: page },
+       success: function (data) {
+           $("#content").html(data);
+       }
+   });
+}
+</script>

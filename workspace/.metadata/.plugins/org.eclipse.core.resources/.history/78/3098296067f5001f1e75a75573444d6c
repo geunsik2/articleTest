@@ -1,0 +1,126 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Board Detail</title>
+    
+    <!-- jQuery -->
+    <script src="js/jquery-3.7.1.min.js"></script>
+    
+    <!-- Bootstrap CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap JS -->
+    <script src="js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Board Detail</h1>
+        <form action="updateMain.do" id="viewForm" method="post" enctype="multipart/form-data">
+            <table class="table table-bordered">
+                <tbody>
+                    <!-- 글번호 -->
+                    <tr>
+                        <th>글번호</th>
+                        <td><input name="testId" type="text" value="${vo.testId}" class="form-control" readonly /></td>
+                    </tr>
+
+                    <!-- 제목 -->
+                    <tr>
+                        <th>제목</th>
+                        <td><input type="text" name="testTitle" value="${vo.testTitle}" class="form-control" /></td>
+                    </tr>
+
+                    <!-- 내용 -->
+                    <tr>
+                        <th>내용</th>
+                        <td><textarea name="testContent" class="form-control" style="height: 200px;">${vo.testContent}</textarea></td>
+                    </tr>
+
+                    <!-- 다운로드 -->
+                    <c:if test="${vo.fileName ne null}">
+                        <tr>
+                            <th>다운로드</th>
+                            <td>
+                                <a href="fileDownload.do?fileName=${vo.fileName}" class="btn btn-link">${vo.fileName}</a>
+                                <button id="filedelete" type="button" class="btn btn-danger btn-sm float-end">파일삭제</button>
+                            </td>
+                        </tr>
+                    </c:if>
+                    
+                    <!-- 첨부파일 -->
+                    <tr>
+                        <th>첨부파일</th>
+                        <td><input type="file" name="uploadFile"></td>
+                    </tr>
+
+                    <!-- 버튼 -->
+                    <tr>
+                        <td colspan="2" class="text-end">
+                            <button id="btn_previous" type="button" class="btn btn-outline-secondary">이전</button>
+                            <button id="btn_modify" type="button" class="btn btn-primary">수정</button>
+                            <button id="btn_delete" type="button" class="btn btn-danger">삭제</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+$(document).ready(function () {
+    $("#btn_modify").click(function () {
+        const data = {
+            testId: $("input[name='testId']").val(),
+            testTitle: $("input[name='testTitle']").val(),
+            testContent: $("textarea[name='testContent']").val()
+        };
+
+        $.ajax({
+            type: "POST",
+            url: "updateMainAjax.do",
+            contentType: "application/json",
+            data: JSON.stringify(data),
+            success: function (response) {
+                if (response === "success") {
+                    alert("수정이 완료되었습니다.");
+                    location.href = "mainDetail.do?testId=" + data.testId;
+                } else {
+                    alert("수정에 실패했습니다.");
+                }
+            },
+            error: function () {
+                alert("오류가 발생했습니다.");
+            }
+        });
+    });
+
+    $("#btn_delete").click(function () {
+        const testId = $("input[name='testId']").val();
+
+        $.ajax({
+            type: "POST",
+            url: "deleteMainAjax.do",
+            contentType: "application/json",
+            data: JSON.stringify({ testId }),
+            success: function (response) {
+                if (response === "success") {
+                    alert("삭제가 완료되었습니다.");
+                    location.href = "main.do";
+                } else {
+                    alert("삭제에 실패했습니다.");
+                }
+            },
+            error: function () {
+                alert("오류가 발생했습니다.");
+            }
+        });
+    });
+});
+</script>
+
+</body>
+</html>

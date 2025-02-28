@@ -1,0 +1,47 @@
+package egovframework.example.main.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import egovframework.example.main.service.MainDefaultVO;
+import egovframework.example.main.service.MainService;
+import egovframework.example.main.service.MainVO;
+
+@Controller
+public class MainController {
+    @Autowired
+    private MainService mainService;
+
+    @RequestMapping(value = "/insertMainAjax.do", method = RequestMethod.POST)
+    @ResponseBody
+    public String insertMain(@RequestBody MainVO mainVO) throws Exception {
+        mainService.insertMain(mainVO);
+        return "success";
+    }
+
+    @RequestMapping(value = "/updateMainAjax.do", method = RequestMethod.POST)
+    @ResponseBody
+    public String updateMain(@RequestBody MainVO mainVO) throws Exception {
+        mainService.updateMain(mainVO);
+        return "success";
+    }
+
+    @RequestMapping(value = "/deleteMainAjax.do", method = RequestMethod.POST)
+    @ResponseBody
+    public String deleteMain(@RequestBody MainVO mainVO) throws Exception {
+        mainService.deleteMain(mainVO.getTestId());
+        return "success";
+    }
+
+    @RequestMapping(value = "/mainSearchAjax.do", method = RequestMethod.POST)
+    @ResponseBody
+    public List<MainVO> searchMain(@RequestBody MainDefaultVO mainDefaultVO) throws Exception {
+        return mainService.selectMain(mainDefaultVO);
+    }
+}

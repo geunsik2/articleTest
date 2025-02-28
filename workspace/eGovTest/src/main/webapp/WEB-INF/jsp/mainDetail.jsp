@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -6,21 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Board Detail</title>
     
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-          crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
-          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
-          crossorigin="anonymous">
-
     <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="js/jquery-3.7.1.min.js"></script>
+    
+    <!-- Bootstrap CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Bootstrap JS -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-            crossorigin="anonymous"></script>
+    <script src="js/bootstrap.min.js"></script>
 </head>
 <body>
     <div class="container">
@@ -47,12 +41,12 @@
                     </tr>
 
                     <!-- 다운로드 -->
-                    <c:if test="${vo.fileName ne null}">
+                    <c:if test="${not empty vo.fileName}">
                         <tr>
                             <th>다운로드</th>
                             <td>
                                 <a href="fileDownload.do?fileName=${vo.fileName}" class="btn btn-link">${vo.fileName}</a>
-                                <button id="filedelete" type="button" class="btn btn-danger btn-sm pull-right">파일삭제</button>
+                                <button id="filedelete" type="button" class="btn btn-danger btn-sm float-end">파일삭제</button>
                             </td>
                         </tr>
                     </c:if>
@@ -65,8 +59,8 @@
 
                     <!-- 버튼 -->
                     <tr>
-                        <td colspan="2" class="text-right">
-                            <button id="btn_previous" type="button" class="btn btn-default">이전</button>
+                        <td colspan="2" class="text-end">
+                            <button id="btn_previous" type="button" class="btn btn-outline-secondary">이전</button>
                             <button id="btn_modify" type="button" class="btn btn-primary">수정</button>
                             <button id="btn_delete" type="button" class="btn btn-danger">삭제</button>
                         </td>
@@ -81,7 +75,23 @@
         // 수정 버튼 클릭 이벤트
         $('#btn_modify').on('click', function () {
             if (confirm("정말 수정하시겠습니까?")) {
-                $('#viewForm').submit();
+                var formData = new FormData($('#viewForm')[0]);
+                
+                $.ajax({
+                    type: "POST",
+                    url: "updateMain.do",
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function(response) {
+                        document.open();
+                        document.write(response);
+                        document.close();
+                    },
+                    error: function(error) {
+                        console.error("Error:", error);
+                    }
+                });
             }
         });
 
@@ -89,19 +99,63 @@
         $('#btn_delete').on('click', function () {
             const testId = '${vo.testId}';
             if (confirm("정말 삭제하시겠습니까?")) {
-                $('#viewForm').attr('action', 'deleteMain.do?testId=' + testId).submit();
+                $.ajax({
+                    type: "POST",
+                    url: "deleteMain.do",
+                    data: { testId: testId },
+                    success: function(response) {
+                        document.open();
+                        document.write(response);
+                        document.close();
+                    },
+                    error: function(error) {
+                        console.error("Error:", error);
+                    }
+                });
             }
         });
 
         // 이전 버튼 클릭 이벤트
         $('#btn_previous').on('click', function () {
-            $(location).attr('href', 'main.do');
+            $.ajax({
+                type: "POST",
+                url: "main.do",
+                success: function(response) {
+                    document.open();
+                    document.write(response);
+                    document.close();
+                },
+                error: function(error) {
+                    console.error("Error:", error);
+                }
+            });
         });
+        
+		// 파일 삭제 버튼 클릭 이벤트
+		$('#filedelete').on('click', function () {
+		    const fileName = '${vo.fileName}'; // 현재 첨부된 파일 이름
+		
+		    if (confirm("정말로 이 파일을 삭제하시겠습니까?")) {
+		        $.ajax({
+		            type: "POST",
+		            url: "deleteFile.do", // 파일 삭제를 처리할 서버 엔드포인트
+		            data: { fileName: fileName }, // 서버로 전송할 데이터
+		            success: function (response) {
+		                if (response === 'success') {
+		                    alert("파일이 성공적으로 삭제되었습니다.");
+		                    $('#filedelete').closest('tr').remove(); // 첨부파일 행 제거
+		                } else {
+		                    alert("파일 삭제에 실패했습니다.");
+		                }
+		            },
+		            error: function (error) {
+		                console.error("Error:", error);
+		                alert("파일 삭제 중 오류가 발생했습니다.");
+		            }
+		        });
+		    }
+		});
 
-        // 파일 삭제 버튼 클릭 이벤트
-        $('#filedelete').on('click', function () {
-            $('#filename').val('');
-        });
     </script>
 </body>
 </html>

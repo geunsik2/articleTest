@@ -8,21 +8,21 @@
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="btn btn-de"/>
+			<item value="btn btn"/>
+			<item value="filedelete"/>
+			<item value="form"/>
+			<item value="loadBoard"/>
+			<item value="dao"/>
+			<item value="pageInfo"/>
+			<item value="page"/>
+			<item value="board"/>
+			<item value="update"/>
 			<item value="getMain"/>
 			<item value="commons"/>
 			<item value="commos"/>
 			<item value="io"/>
 			<item value="file"/>
-			<item value="encodi"/>
-			<item value="multi"/>
-			<item value="springframe"/>
-			<item value="resolver"/>
-			<item value="testTitle"/>
-			<item value="jstl"/>
-			<item value="my"/>
-			<item value="spring"/>
-			<item value="servlet"/>
-			<item value="image.error"/>
 		</list>
 		<list key="replacehistory">
 		</list>

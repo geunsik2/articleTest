@@ -1,0 +1,139 @@
+<body>
+    <div class="container mt-4">
+        <h1 class="text-center">Board List</h1>
+
+        <!-- 검색 기능 -->
+        <div class="d-flex align-items-center justify-content-between mb-4 search-bar">
+            <form id="searchForm" class="d-flex align-items-center">
+                <div class="col-auto" style="padding-right: 10px">
+                    <select class="form-select form-select-sm" name="searchType" id="searchType">
+                        <option value="testTitle">제목</option>
+                        <option value="testContent">내용</option>
+                        <option value="testName">작성자</option>
+                    </select>
+                </div>
+                <div class="col-auto" style="padding-right: 10px">
+                    <input type="text" class="form-control form-control-sm" name="keyword" id="keyword" placeholder="검색어 입력">
+                </div>
+                <div class="col-auto">
+                    <button type="button" id="btnSearch" class="btn btn-sm btn-primary">검색</button>
+                </div>
+            </form>
+
+            <!-- 글쓰기 버튼 -->
+            <a class="btn btn-outline-info" href="mainRegister.do">글쓰기</a>
+        </div>
+
+        <!-- 게시글 목록 테이블 -->
+        <table class="table table-hover table-striped text-center border mt-4">
+            <colgroup>
+                <col width="10%">
+                <col width="50%">
+                <col width="20%">
+                <col width="20%">
+            </colgroup>
+            <thead>
+                <tr>
+                    <th>번호</th>
+                    <th>제목</th>
+                    <th>작성자</th>
+                    <th>등록일자</th>
+                </tr>
+            </thead>
+            <tbody id="boardList">
+                <!-- 게시글 목록이 동적으로 추가될 영역 -->
+            </tbody>
+        </table>
+
+        <!-- 페이지네이션 -->
+        <div id="paginationBox" class="pagination justify-content-center my-4">
+            <!-- 페이지네이션 버튼이 동적으로 추가될 영역 -->
+        </div>
+    </div>
+
+    <!-- JavaScript for AJAX requests -->
+    <script type="text/javascript">
+        // 검색 수행 함수
+        function searchArticles(page = 1, range = 1) {
+            const searchType = $("#searchType").val();
+            const keyword = $("#keyword").val();
+
+            $.ajax({
+                url: "main.do",
+                type: "POST",
+                data: {
+                    page: page,
+                    range: range,
+                    searchType: searchType,
+                    keyword: keyword
+                },
+                success: function (response) {
+                    // 서버에서 반환된 HTML을 동적으로 삽입
+                    $("#boardList").html($(response).find("#boardList").html());
+                    $("#paginationBox").html($(response).find("#paginationBox").html());
+                },
+                error: function () {
+                    alert("게시글을 불러오는 데 실패했습니다.");
+                }
+            });
+        }
+
+        // 상세 페이지 이동 함수
+        function viewDetail(testId) {
+            $.ajax({
+                url: "mainDetail.do",
+                type: "POST",
+                data: { testId: testId },
+                success: function (response) {
+                    // 상세 페이지 내용 표시 (예시로 modal 사용)
+                    $("body").append('<div id="detailModal">' + response + '</div>');
+                    $("#detailModal").modal("show");
+                },
+                error: function () {
+                    alert("상세 정보를 불러오는 데 실패했습니다.");
+                }
+            });
+        }
+
+        // 이전 페이지 버튼 이벤트
+        function fn_prev(page, range) {
+            searchArticles(page, range);
+        }
+
+        // 페이지 번호 클릭 이벤트
+        function fn_pagination(page, range) {
+            searchArticles(page, range);
+        }
+
+        // 다음 페이지 버튼 이벤트
+        function fn_next(page, range) {
+            searchArticles(page, range);
+        }
+
+        // 검색 버튼 클릭 이벤트
+        $(document).on("click", "#btnSearch", function (e) {
+            e.preventDefault();
+            searchArticles(); // 검색 수행 함수 호출
+        });
+
+        // 검색어 입력 후 엔터키 이벤트
+        $(document).on("keypress", "#keyword", function (e) {
+            if (e.key === "Enter") {
+                e.preventDefault();
+                searchArticles(); // 검색 수행 함수 호출
+            }
+        });
+
+        // 상세보기 클릭 이벤트
+        $(document).on("click", ".view-detail", function (e) {
+            e.preventDefault();
+            const testId = $(this).data("id");
+            viewDetail(testId); // 상세보기 함수 호출
+        });
+
+        // 초기 로드 시 게시글 목록 불러오기
+        $(document).ready(function () {
+            searchArticles(); // 첫 페이지 로드
+        });
+    </script>
+</body>

@@ -4,10 +4,13 @@
 <fullyQualifiedTypeName name="org.apache.ibatis.session.SqlSession"/>
 <fullyQualifiedTypeName name="egovframework.example.main.mapper.MainMapper"/>
 <fullyQualifiedTypeName name="org.apache.ibatis.binding.BindingException"/>
-<fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="egovframework.example.main.vo.Search"/>
 <fullyQualifiedTypeName name="org.apache.commons.io.FilenameUtils"/>
 <fullyQualifiedTypeName name="java.io.File"/>
 <fullyQualifiedTypeName name="org.slf4j.Logger"/>
 <fullyQualifiedTypeName name="org.slf4j.LoggerFactory"/>
+<fullyQualifiedTypeName name="egovframework.example.main.vo.MainDefaultVO"/>
+<fullyQualifiedTypeName name="org.springframework.web.multipart.MultipartFile"/>
+<fullyQualifiedTypeName name="java.util.HashMap"/>
+<fullyQualifiedTypeName name="java.util.List"/>
 </qualifiedTypeNameHistroy>

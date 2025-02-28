@@ -1,0 +1,50 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>게시판</title>
+    
+    <!-- CSS & JS -->
+</head>
+<body>
+<div class="container">
+    <h1>게시판 목록</h1>
+    
+    <!-- 검색 폼 -->
+    <form id="searchForm">
+        <input type="text" id="keyword" name="keyword" placeholder="검색어 입력">
+        <button type="button" id="btnSearch">검색</button>
+    </form>
+
+    <!-- AJAX로 로드될 콘텐츠 -->
+    <div id="content"></div>
+</div>
+
+<script src="js/jquery.min.js"></script>
+<script>
+$(document).ready(function () {
+    loadContent();
+
+    $("#btnSearch").click(function () {
+       loadContent();
+    });
+
+    function loadContent() {
+       $.ajax({
+           type: "POST",
+           url: "mainAjax.do",
+           data: $("#searchForm").serialize(),
+           success: function (data) {
+               $("#content").html(data);
+           },
+           error: function () {
+               alert("오류 발생");
+           }
+       });
+   }
+});
+</script>
+</body>
+</html>

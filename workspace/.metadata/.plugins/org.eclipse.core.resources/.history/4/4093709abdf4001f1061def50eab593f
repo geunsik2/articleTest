@@ -1,0 +1,27 @@
+package egovframework.example.main.dao;
+
+import java.util.List;
+
+import egovframework.example.main.vo.MainVO;
+import egovframework.example.main.vo.MainDefaultVO;
+
+public interface MainDao {
+
+    // 게시글 목록을 조회합니다.
+    public List<MainVO> selectMain(MainDefaultVO mainDefaultVO) throws Exception;
+ 
+    // 게시글 등록
+    public void insertMain(MainVO mainVo) throws Exception;
+ 
+    // 특정 게시글의 상세 정보를 조회합니다.
+    public MainVO selectDetail(int testId) throws Exception;
+ 
+    // 기존 게시글 정보를 수정합니다.
+    public void updateMain(MainVO mainVo) throws Exception;
+ 
+    // 특정 게시글을 삭제합니다.
+    public void deleteMain(int testId) throws Exception;
+	
+    // 전체 게시글 개수를 조회합니다.
+    public int getBoardListCnt(MainDefaultVO mainDefaultVO) throws Exception;
+}

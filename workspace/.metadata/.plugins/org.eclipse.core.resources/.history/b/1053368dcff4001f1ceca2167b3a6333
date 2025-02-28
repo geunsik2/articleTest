@@ -1,0 +1,139 @@
+package egovframework.example.main.controller;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
+
+import org.apache.commons.io.FilenameUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+
+import egovframework.example.main.service.MainDefaultVO;
+import egovframework.example.main.service.MainService;
+import egovframework.example.main.service.MainVO;
+
+@Controller
+public class MainController {
+    private static final Logger logger = LoggerFactory.getLogger(MainController.class);
+
+    @Autowired
+    private MainService mainService;
+
+    // 게시글 목록 조회
+    @RequestMapping(value = "/main.do", method = RequestMethod.POST)
+    @ResponseBody	// JSON 응답을 반환
+    public Map<String, Object> getMainPage(@RequestBody MainDefaultVO mainDefaultVO) throws Exception {
+        Map<String, Object> response = new HashMap<>();
+
+        // 페이지 정보 설정
+        mainDefaultVO.setPage(Math.max(mainDefaultVO.getPage(), 1));
+        mainDefaultVO.setRange(Math.max(mainDefaultVO.getRange(), 1));
+
+        // 전체 게시글 개수 및 페이징 처리
+        int listCnt = mainService.getBoardListCnt(mainDefaultVO);
+        mainDefaultVO.pageInfo(mainDefaultVO.getPage(), mainDefaultVO.getRange(), listCnt);
+
+        // 게시글 목록 조회
+        List<MainVO> list = mainService.selectMain(mainDefaultVO);
+
+        response.put("list", list);
+        response.put("pagination", mainDefaultVO);
+
+        return response;
+    }
+
+    // 게시글 작성 (Ajax)
+    @RequestMapping(value = "/insertMain.do", method = RequestMethod.POST)
+    @ResponseBody
+    public Map<String, String> insertMain(@ModelAttribute MainVO mainVO) throws Exception {
+        Map<String, String> response = new HashMap<>();
+
+        // 파일 업로드 처리
+        String fileName = handleFileUpload(mainVO.getUploadFile());
+        mainVO.setFileName(fileName);
+
+        // 게시글 등록
+        mainService.insertMain(mainVO);
+        response.put("result", "success");
+
+        return response; // 성공 메시지 반환
+    }
+
+    // 게시글 수정 (Ajax)
+    @RequestMapping(value = "/updateMain.do", method = RequestMethod.POST)
+    @ResponseBody
+    public Map<String, String> updateMain(@ModelAttribute MainVO mainVO) throws Exception {
+        Map<String, String> response = new HashMap<>();
+
+        // 파일 업로드 처리
+        if (mainVO.getUploadFile() != null && !mainVO.getUploadFile().isEmpty()) {
+            String fileName = handleFileUpload(mainVO.getUploadFile());
+            mainVO.setFileName(fileName);
+        }
+
+        // 게시글 수정
+        mainService.updateMain(mainVO);
+        response.put("result", "success");
+
+        return response; // 성공 메시지 반환
+    }
+
+    // 게시글 삭제 (Ajax)
+    @RequestMapping(value = "/deleteMain.do", method = RequestMethod.POST)
+    @ResponseBody
+    public Map<String, String> deleteMain(@RequestBody Map<String, Integer> request) throws Exception {
+        Map<String, String> response = new HashMap<>();
+
+        int testId = request.get("testId");
+        mainService.deleteMain(testId);
+        
+        response.put("result", "success");
+        
+        return response; // 성공 메시지 반환
+    }
+
+    /**
+     * 파일 업로드 처리 메서드
+     */
+    private String handleFileUpload(MultipartFile uploadFile) throws IOException {
+        if (uploadFile == null || uploadFile.isEmpty()) {
+            return null; // 업로드된 파일이 없으면 null 반환
+        }
+
+        String originalFileName = uploadFile.getOriginalFilename();
+        String ext = FilenameUtils.getExtension(originalFileName); // 확장자 구하기
+        UUID uuid = UUID.randomUUID(); // UUID 생성
+        String fileName = uuid + "." + ext;
+
+        // 업로드 디렉토리 경로 설정 (OS에 따라 다르게 처리)
+        String os = System.getProperty("os.name").toLowerCase();
+        String uploadDirPath;
+
+        if (os.contains("win")) {
+            uploadDirPath = "C:\\eGovFrameDev-3.10.0-64bit\\workspace\\eGovTest\\articleTest";
+        } else {
+            uploadDirPath = "/home/gsyun/apache-tomcat-8.0.36/webapps/eGovTest/fileUpload";
+        }
+
+        File uploadDir = new File(uploadDirPath);
+        if (!uploadDir.exists()) {
+            uploadDir.mkdirs(); // 디렉토리가 없으면 생성
+        }
+
+        // 파일 저장
+        uploadFile.transferTo(new File(uploadDir, fileName));
+
+        return fileName;
+    }
+}

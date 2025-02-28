@@ -1,0 +1,82 @@
+package egovframework.example.main.vo;
+
+public class MainDefaultVO {
+
+    // 페이징 관련 필드
+    private int pageIndex = 1; // 현재 페이지 번호
+    private int pageUnit = 10; // 한 페이지에 표시할 데이터 개수
+    private int pageSize = 10; // 페이지 사이즈 (페이지 블록 크기)
+    private int firstIndex = 1; // 첫 번째 데이터 인덱스
+    private int lastIndex = 1; // 마지막 데이터 인덱스
+    private int recordCountPerPage = 10; // 페이지당 데이터 개수
+
+    // 검색 관련 필드
+    private String searchType; // 검색 유형 (예: 제목, 내용, 작성자 등)
+    private String keyword; // 검색어
+
+    // 페이징 필드의 Getter & Setter
+    public int getPageIndex() {
+        return pageIndex;
+    }
+
+    public void setPageIndex(int pageIndex) {
+        this.pageIndex = pageIndex;
+    }
+
+    public int getPageUnit() {
+        return pageUnit;
+    }
+
+    public void setPageUnit(int pageUnit) {
+        this.pageUnit = pageUnit;
+    }
+
+    public int getPageSize() {
+        return pageSize;
+    }
+
+    public void setPageSize(int pageSize) {
+        this.pageSize = pageSize;
+    }
+
+    public int getFirstIndex() {
+        return firstIndex;
+    }
+
+    public void setFirstIndex(int firstIndex) {
+        this.firstIndex = firstIndex;
+    }
+
+    public int getLastIndex() {
+        return lastIndex;
+    }
+
+    public void setLastIndex(int lastIndex) {
+        this.lastIndex = lastIndex;
+    }
+
+    public int getRecordCountPerPage() {
+        return recordCountPerPage;
+    }
+
+    public void setRecordCountPerPage(int recordCountPerPage) {
+        this.recordCountPerPage = recordCountPerPage;
+    }
+
+    // 검색 필드의 Getter & Setter
+    public String getSearchType() {
+        return searchType;
+    }
+
+    public void setSearchType(String searchType) {
+        this.searchType = searchType;
+    }
+
+    public String getKeyword() {
+        return keyword;
+    }
+
+    public void setKeyword(String keyword) {
+        this.keyword = keyword;
+    }
+}

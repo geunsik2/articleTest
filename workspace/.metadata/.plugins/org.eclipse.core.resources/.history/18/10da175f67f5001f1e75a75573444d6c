@@ -1,0 +1,93 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시글 작성</title>
+
+    <!-- jQuery 라이브러리 -->
+    <script src="js/jquery-3.7.1.min.js"></script>
+
+    <!-- Bootstrap CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- 페이지 헤더 -->
+        <h1 class="text-center">Board Write</h1>
+
+        <!-- 게시글 작성 폼 -->
+        <form id="form_main" action="insertMain.do" method="post" enctype="multipart/form-data">
+            <table class="table table-bordered">
+                <tbody>
+                    <!-- 제목 입력 -->
+                    <tr>
+                        <th>제목</th>
+                        <td>
+                            <input type="text" name="testTitle" class="form-control" placeholder="제목을 입력하세요." required />
+                        </td>
+                    </tr>
+
+                    <!-- 내용 입력 -->
+                    <tr>
+                        <th>내용</th>
+                        <td>
+                            <textarea name="testContent" class="form-control" placeholder="내용을 입력하세요." rows="8" required></textarea>
+                        </td>
+                    </tr>
+
+                    <!-- 파일 업로드 -->
+                    <tr>
+                        <th>첨부파일</th>
+                        <td><input type="file" name="uploadFile"></td>
+                    </tr>
+
+                    <!-- 버튼 섹션 -->
+                    <tr>
+                        <td colspan="2" class="text-end">
+                            <button id="btn_previous" type="button" class="btn btn-outline-secondary">이전</button>
+                            <button id="btn_register" type="button" class="btn btn-primary">등록</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+$(document).ready(function () {
+    $("#btn_register").click(function () {
+        const formData = new FormData();
+        formData.append("testTitle", $("input[name='testTitle']").val());
+        formData.append("testContent", $("textarea[name='testContent']").val());
+        formData.append("uploadFile", $("input[name='uploadFile']")[0].files[0]);
+
+        $.ajax({
+            type: "POST",
+            url: "insertMainAjax.do",
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (response) {
+                if (response === "success") {
+                    alert("등록이 완료되었습니다.");
+                    location.href = "main.do";
+                } else {
+                    alert("등록에 실패했습니다.");
+                }
+            },
+            error: function () {
+                alert("오류가 발생했습니다.");
+            }
+        });
+    });
+});
+</script>
+
+</body>
+</html>

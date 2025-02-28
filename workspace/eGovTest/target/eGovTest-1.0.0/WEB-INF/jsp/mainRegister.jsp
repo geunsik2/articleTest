@@ -60,7 +60,7 @@
                     <!-- 버튼 섹션 -->
                     <tr>
                         <td colspan="2" class="text-right">
-                            <button id="btn_previous" type="button" class="btn btn-default">이전</button>
+                            <button id="btn_previous" type="button" class="btn btn-outline-secondary">이전</button>
                             <button id="btn_register" type="button" class="btn btn-primary">등록</button>
                         </td>
                     </tr>
@@ -73,26 +73,31 @@
     <script type="text/javascript">
         // 등록 버튼 클릭 이벤트
         $("#btn_register").click(function register() {
-            const title = $("input[name='testTitle']").val().trim();
-            const content = $("textarea[name='testContent']").val().trim();
-
-            // 폼 입력값 유효성 검사
-            if (!title) {
-                alert("제목을 입력하세요.");
-                return;
-            }
-            if (!content) {
-                alert("내용을 입력하세요.");
-                return;
-            }
-
-            $("#form_main").submit();
-        });
-
-        // 이전 버튼 클릭 이벤트
-        $("#btn_previous").click(function previous() {
-	        $(location).attr('href', 'main.do');
-	    });
+		    const title = $("input[name='testTitle']").val().trim();
+		    const content = $("textarea[name='testContent']").val().trim();
+		
+		    if (!title || !content) {
+		        alert("제목과 내용을 입력하세요.");
+		        return;
+		    }
+		
+		    let formData = new FormData($('#form_main')[0]);
+		
+		    $.ajax({
+		        url: 'insertMain.do',
+		        type: 'POST',
+		        data: formData,
+		        processData: false,
+		        contentType: false,
+		        success: function(response) {
+		            alert("등록되었습니다.");
+		            location.href = 'main.do';
+		        },
+		        error: function(xhr, status, error) {
+		            alert("등록 중 오류가 발생했습니다.");
+		        }
+		    });
+		});
     </script>
 </body>
 </html>

@@ -7,14 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Board List</title>
     
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-    
     <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="js/jquery-3.7.1.min.js"></script>
+    
+    <!-- Bootstrap CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">    
     
     <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
     
     <style>
         a { text-decoration: none; }
@@ -46,7 +46,7 @@
 	
 	            <!-- 검색 버튼 -->
 	            <div class="col-auto">
-	                <button type="button" id="btnSearch" class="btn btn-sm btn-primary">검색</button>
+	                <button type="button" id="btnSearch" class="btn btn-primary btn-sm">검색</button>
 	            </div>
 	        </form>
 	        
@@ -113,54 +113,106 @@
 </body>
 <script type="text/javascript">
     // 이전 버튼 이벤트
-    // 5개의 인자값을 가지고 이동 main.do
-    // 무조건 이전페이지 범위의 가장 앞 페이지로 이동
-    function fn_prev(page, range, rangeSize, listSize, searchType, keyword) {
-        page = ((range - 2) * rangeSize) + 1;
-        range = range - 1;
-
-        var url = "main.do";
-        url += "?page=" + page;
-        url += "&range=" + range;
-        url += "&listSize=" + listSize;
-        url += "&searchType=" + searchType;
-        url += "&keyword=" + keyword;
-        location.href = url;
-    }
+	function fn_prev(page, range, rangeSize, listSize, searchType, keyword) {
+	    page = ((range - 2) * rangeSize) + 1;
+	    range = range - 1;
+	
+	    var data = {
+	        page: page,
+	        range: range,
+	        listSize: listSize,
+	        searchType: searchType,
+	        keyword: keyword
+	    };
+	
+	    $.ajax({
+	        type: "POST",
+	        url: "main.do",
+	        data: data,
+	        success: function(response) {
+	            document.open();
+	            document.write(response);
+	            document.close();
+	        },
+	        error: function(error) {
+	            console.error("Error:", error);
+	        }
+	    });
+	}
+    
+	// 다음 버튼 이벤트
+	function fn_next(page, range, rangeSize, listSize, searchType, keyword) {
+	    page = parseInt(range * rangeSize) + 1;
+	    range = parseInt(range) + 1;
+	
+	    var data = {
+	        page: page,
+	        range: range,
+	        listSize: listSize,
+	        searchType: searchType,
+	        keyword: keyword
+	    };
+	
+	    $.ajax({
+	        type: "POST",
+	        url: "main.do",
+	        data: data,
+	        success: function(response) {
+	            document.open();
+	            document.write(response);
+	            document.close();
+	        },
+	        error: function(error) {
+	            console.error("Error:", error);
+	        }
+	    });
+	}
 
     // 페이지 번호 클릭
     function fn_pagination(page, range, rangeSize, listSize, searchType, keyword) {
-        var url = "main.do";
-        url += "?page=" + page;
-        url += "&range=" + range;
-        url += "&listSize=" + listSize;
-        url += "&searchType=" + searchType;
-        url += "&keyword=" + keyword;
+        var data = {
+            page: page,
+            range: range,
+            listSize: listSize,
+            searchType: searchType,
+            keyword: keyword
+        };
 
-        location.href = url;
+        $.ajax({
+            type: "POST",
+            url: "main.do",
+            data: data,
+            success: function(response) {
+                document.open();
+                document.write(response);
+                document.close();
+            },
+            error: function(error) {
+                console.error("Error:", error);
+            }
+        });
     }
-
-    // 다음 버튼 이벤트
-    // 다음 페이지 범위의 가장 앞 페이지로 이동
-    function fn_next(page, range, rangeSize, listSize, searchType, keyword) {
-        page = parseInt(range * rangeSize) + 1;
-        range = parseInt(range) + 1;
-
-        var url = "main.do";
-        url += "?page=" + page;
-        url += "&range=" + range;
-        url += "&listSize=" + listSize;
-        url += "&searchType=" + searchType;
-        url += "&keyword=" + keyword;
-        location.href = url;
-    }
-    
+ 
     // 검색 수행 함수
     function searchArticle() {
-        var url = "main.do";
-        url += "?searchType=" + $("#searchType").val();
-        url += "&keyword=" + $("#keyword").val();
-        location.href = url; // 해당 URL로 이동
+        var data = {
+            searchType: $("#searchType").val(),
+            keyword: $("#keyword").val()
+        };
+
+        $.ajax({
+            type: "POST",
+            url: "main.do",
+            data: data,
+            success: function(response) {
+                document.open();
+                document.write(response);
+                document.close();
+            },
+            error: function(error) {
+                console.error("Error:", error);
+            }
+        });
     }
 
     // 검색
