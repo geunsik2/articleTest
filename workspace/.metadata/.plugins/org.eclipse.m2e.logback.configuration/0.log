@@ -356,3 +356,4 @@
 2025-02-28 12:44:21,836 [Worker-161: Building Workspace] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Executing resource filtering for eGovTest
 2025-02-28 13:27:34,661 [Worker-192: Cleaning all projects] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Cleaning filtered folder for eGovTest
 2025-02-28 13:27:34,781 [Worker-180: Building Workspace] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Changed resources require a complete clean of filtered resources of eGovTest
+2025-02-28 13:27:34,781 [Worker-180: Building Workspace] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Executing resource filtering for eGovTest
