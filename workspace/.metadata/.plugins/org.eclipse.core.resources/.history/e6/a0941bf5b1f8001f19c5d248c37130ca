@@ -1,0 +1,13 @@
+package egovframework.example.main.service;
+
+import java.util.List;
+
+public interface CommentService {
+    List<CommentVO> selectCommentList(CommentVO commentVO) throws Exception;
+    
+    void insertComment(CommentVO commentVO) throws Exception;
+    
+    void updateComment(CommentVO commentVO) throws Exception;
+    
+    void deleteComment(CommentVO commentVO) throws Exception;
+}

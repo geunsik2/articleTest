@@ -14,20 +14,20 @@ public interface MainMapper {
     public List<MainVO> selectMain(MainDefaultVO mainDefaultVO) throws Exception;
  
     // 새로운 게시글을 등록합니다.
-    public void insertMain(MainVO mainVo) throws Exception;
+    public void insertMain(MainVO mainVO) throws Exception;
  
     // 특정 게시글의 상세 정보를 조회합니다.
-    public MainVO selectDetail(MainVO mainVo) throws Exception;
+    public MainVO selectDetail(MainVO mainVO) throws Exception;
  
     // 기존 게시글 정보를 수정합니다.
-    public void updateMain(MainVO mainVo) throws Exception;
+    public void updateMain(MainVO mainVO) throws Exception;
  
     // 특정 게시글을 삭제합니다.
-    public void deleteMain(MainVO mainVo) throws Exception;
+    public void deleteMain(MainVO mainVO) throws Exception;
     
     // 게시글의 총 개수를 조회합니다.
     public int getBoardListCnt(MainDefaultVO mainDefaultVO) throws Exception;
     
     // 특정 게시글의 파일 정보를 null로 수정합니다.
-    public int updateFileToNull(MainVO mainVo);
+    public int updateFileToNull(MainVO mainVO);
 }

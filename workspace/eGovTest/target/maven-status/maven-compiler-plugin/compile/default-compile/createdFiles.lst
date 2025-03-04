@@ -1,7 +1,7 @@
 egovframework\example\main\service\MainDefaultVO.class
-egovframework\example\main\service\ReplyVO.class
 egovframework\example\main\service\impl\MainMapper.class
 egovframework\example\main\service\impl\MainServiceImpl.class
+egovframework\example\main\controller\CommentController.class
 egovframework\example\cmmn\web\EgovBindingInitializer.class
 egovframework\example\main\service\MainService.class
 egovframework\example\main\service\MainVO.class
@@ -9,4 +9,7 @@ egovframework\example\cmmn\EgovSampleExcepHndlr.class
 egovframework\example\cmmn\EgovSampleOthersExcepHndlr.class
 egovframework\example\cmmn\web\EgovImgPaginationRenderer.class
 egovframework\example\main\controller\MainController.class
-egovframework\example\main\service\impl\ReplyMapper.class
+egovframework\example\main\service\CommentVO.class
+egovframework\example\main\service\CommentService.class
+egovframework\example\main\service\impl\CommentMapper.class
+egovframework\example\main\service\impl\CommentServiceImpl.class

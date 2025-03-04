@@ -110,7 +110,7 @@
 		                <label for="commentContent">내용</label>
 		                <textarea class="form-control" id="commentContent" name="commentContent" rows="3" required></textarea>
 		            </div>
-		            <button type="button" id="btn_comment_submit" class="btn btn-primary">댓글 등록</button>
+		            <button type="button" id="btn_comment_submit" class="btn btn-primary float-end">댓글 등록</button>
 		        </form>
 		    </div>
 		</div>
@@ -204,10 +204,11 @@
 		
 		// 댓글 목록 새로고침 함수
 	    function refreshCommentList() {
+			const testId = '${vo.testId}';
 	        $.ajax({
 	            type: "GET",
 	            url: "getCommentList.do",
-	            data: { testId: ${vo.testId} },
+	            data: { testId: testId },
 	            dataType: "json",
 	            success: function(commentList) {
 	                let html = '';
@@ -232,8 +233,7 @@
 	                        html += '</div>';
 	                    }
 	                }
-	                
-	                $('#commentList').html(html);
+	                $('#commentList').html(html); // HTML 삽입
 	            },
 	            error: function(error) {
 	                console.error("Error:", error);
@@ -256,25 +256,27 @@
 	            return;
 	        }
 	        
-	        $.ajax({
-	            type: "POST",
-	            url: "insertComment.do",
-	            data: $('#commentForm').serialize(),
-	            success: function(response) {
-	                if(response === 'success') {
-	                    alert("댓글이 등록되었습니다.");
-	                    $('#commentName').val('');
-	                    $('#commentContent').val('');
-	                    refreshCommentList();
-	                } else {
-	                    alert("댓글 등록에 실패했습니다.");
-	                }
-	            },
-	            error: function(error) {
-	                console.error("Error:", error);
-	                alert("댓글 등록 중 오류가 발생했습니다.");
-	            }
-	        });
+	        if(confirm("정말 등록하시겠습니까?")) {
+		        $.ajax({
+		            type: "POST",
+		            url: "insertComment.do",
+		            data: $('#commentForm').serialize(),
+		            success: function(response) {
+		                if(response === 'success') {
+		                    alert("댓글이 등록되었습니다.");
+		                    $('#commentName').val('');
+		                    $('#commentContent').val('');
+		                    refreshCommentList();
+		                } else {
+		                    alert("댓글 등록에 실패했습니다.");
+		                }
+		            },
+		            error: function(error) {
+		                console.error("Error:", error);
+		                alert("댓글 등록 중 오류가 발생했습니다.");
+		            }
+		        });
+	        }
 	    });
 	    
 	    // 댓글 수정
