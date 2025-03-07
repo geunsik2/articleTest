@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="egovframework.example.main.service.impl.BoardMapper">
+	
+	<!-- 게시글 목록 조회 -->
+	<select id="selectBoard" resultType="boardVO">
+		SELECT * FROM board
+		<where>
+			<if test="searchType=='boardTitle' and keyword != null and keyword !=''">
+			    AND boardTitle like CONCAT('%',#{keyword},'%')
+			</if>
+			<if test="searchType=='boardContent' and keyword != null and keyword !=''">
+			    AND boardContent like CONCAT('%',#{keyword},'%')
+			</if>
+			<if test="searchType=='boardName' and keyword != null and keyword !=''">
+			    AND boardName like CONCAT('%',#{keyword},'%')
+			</if>
+		</where>
+    	ORDER BY boardId DESC
+    	LIMIT #{startList}, #{listSize}
+    </select>
+    
+    <!-- 게시글 개수  -->
+    <select id="getBoardListCnt" resultType="Integer">
+    	SELECT COUNT(*) AS listCnt
+    	FROM board
+    	<where>
+        <if test="keyword != null and keyword != ''">
+            <if test="searchType=='boardTitle'">
+                AND boardTitle like CONCAT('%',#{keyword},'%')
+            </if>
+            <if test="searchType=='boardContent'">
+                AND boardContent like CONCAT('%',#{keyword},'%')
+            </if>
+            <if test="searchType=='boardName'">
+                AND boardName like CONCAT('%',#{keyword},'%')
+            </if>
+        </if>
+    </where>
+    </select>
+    
+    <!-- 게시글 상세보기 -->
+    <select id="selectDetail" parameterType="Integer" resultType="boardVO">
+        SELECT * FROM board
+        WHERE boardId = #{boardId}
+    </select>
+    
+    <!-- 게시글 삽입 -->
+    <insert id="insertBoard" parameterType="boardVO">
+    	INSERT INTO board(boardTitle, boardContent, boardName, boardDate, fileName, userId)
+        VALUES(#{boardTitle}, #{boardContent}, #{boardName}, now(), #{fileName}, #{userId})
+    </insert>
+    
+    <!-- 게시글 수정 -->
+    <update id="updateBoard" parameterType="boardVO">
+        UPDATE board SET
+        boardTitle = #{boardTitle}, boardContent = #{boardContent}, fileName = #{fileName}
+        WHERE boardId = #{boardId}
+    </update>
+    
+    <!-- 게시글 삭제 -->
+    <delete id="deleteBoard" parameterType="Integer">
+        DELETE FROM board
+        WHERE boardId = #{boardId}
+    </delete>
+	
+	<!-- 파일 삭제 -->
+	<update id="updateFileToNull" parameterType="boardVO">
+	    UPDATE board SET
+	    fileName = NULL
+	    WHERE fileName = #{fileName}
+	</update>
+</mapper>

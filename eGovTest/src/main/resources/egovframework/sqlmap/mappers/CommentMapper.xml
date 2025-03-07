@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- SQL 쿼리를 정의하며, 매퍼 인터페이스의 메서드와 매핑된다. -->
+<mapper namespace="egovframework.example.main.service.impl.CommentMapper">
+	<!-- 댓글 목록 조회 -->
+    <select id="selectCommentList" parameterType="commentVO" resultType="commentVO">
+        SELECT *
+        FROM comment
+        WHERE boardId = #{boardId}
+        ORDER BY commentId DESC
+    </select>
+
+	<!-- 특정 댓글 조회 -->
+	<select id="selectComment" parameterType="Integer" resultType="commentVO">
+		SELECT * 
+		FROM comment
+		WHERE commentId = #{commentId}
+	</select>
+	
+	<!-- 댓글 등록 -->
+	<insert id="insertComment" parameterType="commentVO">
+		INSERT INTO comment(boardId, commentContent, commentName, commentDate, userId)
+		VALUES (#{boardId}, #{commentContent}, #{commentName}, now(), #{userId}
+	</insert>
+    
+    <!-- 댓글 수정 -->
+    <update id="updateComment" parameterType="commentVO">
+        UPDATE comment SET 
+        commentContent = #{commentContent}
+        WHERE commentId = #{commentId}
+    </update>
+    
+    <!-- 댓글 삭제 -->
+    <delete id="deleteComment" parameterType="commentVO">
+        DELETE FROM comment
+        WHERE commentId = #{commentId}
+    </delete>
+    
+    <!-- 게시글에 달린 모든 댓글 삭제 -->
+    <delete id="deleteCommentsByBoardId" parameterType="commentVO">
+        DELETE FROM comment
+        WHERE boardId = #{boardId}
+    </delete>
+</mapper>
