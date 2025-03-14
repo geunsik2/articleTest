@@ -184,7 +184,7 @@ public class BoardController {
             String uploadDirPath;
 
             if (os.contains("win")) {
-                uploadDirPath = "C:\\eGovFrameDev-3.10.0-64bit\\workspace\\eGovTest\\articleBoard";
+                uploadDirPath = "C:\\eGovFrameDev-3.10.0-64bit\\workspace\\eGovTest\\fileUpload";
             } else {
                 uploadDirPath = "/home/gsyun/apache-tomcat-8.0.36/webapps/eGovTest/fileUpload";
             }
@@ -223,7 +223,7 @@ public class BoardController {
         String uploadDirPath;
 
         if (os.contains("win")) {
-            uploadDirPath = "C:\\eGovFrameDev-3.10.0-64bit\\workspace\\eGovTest\\articleBoard";
+            uploadDirPath = "C:\\eGovFrameDev-3.10.0-64bit\\workspace\\eGovTest\\fileUpload";
         } else {
             uploadDirPath = "/home/gsyun/apache-tomcat-8.0.36/webapps/eGovTest/fileUpload";
         }
@@ -241,8 +241,8 @@ public class BoardController {
 
 
     // 파일 다운로드 처리 메서드
-    @RequestMapping("fileDownload.do")
-    public void fileDownload(HttpServletRequest request, HttpServletResponse response) throws Exception {
+    @RequestMapping("downloadFile.do")
+    public void downloadFile(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
         String filename = request.getParameter("fileName");
         String realFilename = "";
@@ -266,7 +266,7 @@ public class BoardController {
             String basePath;
 
             if (osName.contains("win")) {
-                basePath = "C:\\eGovFrameDev-3.10.0-64bit\\workspace\\eGovTest\\articleBoard\\";
+                basePath = "C:\\eGovFrameDev-3.10.0-64bit\\workspace\\eGovTest\\fileUpload\\";
             } else {
                 basePath = "/home/gsyun/apache-tomcat-8.0.36/webapps/eGovTest/fileUpload/";
             }

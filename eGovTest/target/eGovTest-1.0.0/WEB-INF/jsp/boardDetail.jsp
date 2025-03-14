@@ -107,7 +107,7 @@
                         <tr>
                             <th>다운로드</th>
                             <td>
-                                <a href="fileDownload.do?fileName=${vo.fileName}" class="btn btn-link">${vo.fileName}</a>
+                                <a href="downloadFile.do?fileName=${vo.fileName}" class="btn btn-link">${vo.fileName}</a>
                                 <button id="filedelete" type="button" class="btn btn-danger btn-sm float-end">파일삭제</button>
                             </td>
                         </tr>
@@ -191,231 +191,231 @@
             </div>
 		</div>
     </div>
-
-    <!-- JavaScript -->
-    <script type="text/javascript">
-	 	// 수정 버튼 클릭 이벤트
-	    $('#btn_modify').on('click', function () {
-	        if (confirm("정말 수정하시겠습니까?")) {
-	            var formData = new FormData($('#viewForm')[0]);
-	            
-	            $.ajax({
-	                type: "POST",
-	                url: "updateBoard.do",
-	                data: formData,
-	                processData: false,
-	                contentType: false,
-	                success: function(response) {
-	                    document.open();
-	                    document.write(response);
-	                    document.close();
-	                },
-	                error: function(error) {
-	                    console.error("Error:", error);
-	                }
-	            });
-	        }
-	    });
-
-        // 삭제 버튼 클릭 이벤트
-        $('#btn_delete').on('click', function () {
-            const boardId = '${vo.boardId}';
-            if (confirm("정말 삭제하시겠습니까?")) {
-                $.ajax({
-                    type: "POST",
-                    url: "deleteBoard.do",
-                    data: { boardId: boardId },
-                    success: function(response) {
-                        document.open();
-                        document.write(response);
-                        document.close();
-                    },
-                    error: function(error) {
-                        console.error("Error:", error);
-                    }
-                });
-            }
-        });
-
-        // 이전 버튼 클릭 이벤트
-        $('#btn_previous').on('click', function () {
-            $.ajax({
-                type: "POST",
-                url: "board.do",
-                success: function(response) {
-                    document.open();
-                    document.write(response);
-                    document.close();
-                },
-                error: function(error) {
-                    console.error("Error:", error);
-                }
-            });
-        });
-        
-		// 파일 삭제 버튼 클릭 이벤트
-		$('#filedelete').on('click', function () {
-		    const fileName = '${vo.fileName}'; // 현재 첨부된 파일 이름
-		
-		    if (confirm("정말로 이 파일을 삭제하시겠습니까?")) {
-		        $.ajax({
-		            type: "POST",
-		            url: "deleteFile.do", // 파일 삭제를 처리할 서버 엔드포인트
-		            data: { fileName: fileName }, // 서버로 전송할 데이터
-		            success: function (response) {
-		                if (response === 'success') {
-		                    alert("파일이 성공적으로 삭제되었습니다.");
-		                    $('#filedelete').closest('tr').remove(); // 첨부파일 행 제거
-		                } else {
-		                    alert("파일 삭제에 실패했습니다.");
-		                }
-		            },
-		            error: function (error) {
-		                console.error("Error:", error);
-		                alert("파일 삭제 중 오류가 발생했습니다.");
-		            }
-		        });
-		    }
-		});
-		
-		// 댓글 목록 새로고침 함수
-	    function refreshCommentList() {
-			const boardId = '${vo.boardId}';
+</body>
+<!-- JavaScript -->
+<script type="text/javascript">
+	// 수정 버튼 클릭 이벤트
+	$('#btn_modify').on('click', function () {
+	    if (confirm("정말 수정하시겠습니까?")) {
+	        var formData = new FormData($('#viewForm')[0]);
+	        
 	        $.ajax({
-	            type: "GET",
-	            url: "getCommentList.do",
-	            data: { boardId: boardId },
-	            dataType: "json",
-	            success: function(commentList) {
-	                let html = '';
-	                
-	                if(commentList.length === 0) {
-	                    html = '<p class="text-center">등록된 댓글이 없습니다.</p>';
-	                } else {
-	                    for(let i = 0; i < commentList.length; i++) {
-	                        let comment = commentList[i];
-	                        html += '<div class="card mb-2">';
-	                        html += '  <div class="card-body">';
-	                        html += '    <div class="d-flex justify-content-between">';
-	                        html += '      <h5 class="card-title">' + comment.commentName + '</h5>';
-	                        html += '      <small class="text-muted">' + comment.commentDate + '</small>';
-	                        html += '    </div>';
-	                        html += '    <p class="card-text">' + comment.commentContent + '</p>';
-	                        html += '    <div class="text-end">';
-	                        html += '      <button type="button" class="btn btn-sm btn-outline-primary btn-edit-comment" data-comment-id="' + comment.commentId + '">수정</button>';
-	                        html += '      <button type="button" class="btn btn-sm btn-outline-danger btn-delete-comment" data-comment-id="' + comment.commentId + '">삭제</button>';
-	                        html += '    </div>';
-	                        html += '  </div>';
-	                        html += '</div>';
-	                    }
-	                }
-	                $('#commentList').html(html); // HTML 삽입
+	            type: "POST",
+	            url: "updateBoard.do",
+	            data: formData,
+	            processData: false,
+	            contentType: false,
+	            success: function(response) {
+	                document.open();
+	                document.write(response);
+	                document.close();
 	            },
 	            error: function(error) {
 	                console.error("Error:", error);
 	            }
 	        });
 	    }
+	});
+
+	// 삭제 버튼 클릭 이벤트
+	$('#btn_delete').on('click', function () {
+	    const boardId = '${vo.boardId}';
+	    if (confirm("정말 삭제하시겠습니까?")) {
+	        $.ajax({
+	            type: "POST",
+	            url: "deleteBoard.do",
+	            data: { boardId: boardId },
+	            success: function(response) {
+	                document.open();
+	                document.write(response);
+	                document.close();
+	            },
+	            error: function(error) {
+	                console.error("Error:", error);
+	            }
+	        });
+	    }
+	});
+
+	// 이전 버튼 클릭 이벤트
+	$('#btn_previous').on('click', function () {
+	    $.ajax({
+	        type: "POST",
+	        url: "board.do",
+	        success: function(response) {
+	            document.open();
+	            document.write(response);
+	            document.close();
+	        },
+	        error: function(error) {
+	            console.error("Error:", error);
+	        }
+	    });
+	});
+      
+	// 파일 삭제 버튼 클릭 이벤트
+	$('#filedelete').on('click', function () {
+	    const fileName = '${vo.fileName}'; // 현재 첨부된 파일 이름
+	
+	    if (confirm("정말로 이 파일을 삭제하시겠습니까?")) {
+	        $.ajax({
+	            type: "POST",
+	            url: "deleteFile.do", // 파일 삭제를 처리할 서버 엔드포인트
+	            data: { fileName: fileName }, // 서버로 전송할 데이터
+	            success: function (response) {
+	                if (response === 'success') {
+	                    alert("파일이 성공적으로 삭제되었습니다.");
+	                    $('#filedelete').closest('tr').remove(); // 첨부파일 행 제거
+	                } else {
+	                    alert("파일 삭제에 실패했습니다.");
+	                }
+	            },
+	            error: function (error) {
+	                console.error("Error:", error);
+	                alert("파일 삭제 중 오류가 발생했습니다.");
+	            }
+	        });
+	    }
+	});
+
+	// 댓글 목록 새로고침 함수
+	function refreshCommentList() {
+		const boardId = '${vo.boardId}';
+		
+		$.ajax({
+	        type: "GET",
+	        url: "getCommentList.do",
+	        data: { boardId: boardId },
+	        dataType: "json",
+	        success: function(commentList) {
+	            let html = '';
+	            
+	            if(commentList.length === 0) {
+	                html = '<p class="text-center">등록된 댓글이 없습니다.</p>';
+	            } else {
+	                for(let i = 0; i < commentList.length; i++) {
+	                    let comment = commentList[i];
+	                    html += '<div class="card mb-2">';
+	                    html += '  <div class="card-body">';
+	                    html += '    <div class="d-flex justify-content-between">';
+	                    html += '      <h5 class="card-title">' + comment.commentName + '</h5>';
+	                    html += '      <small class="text-muted">' + comment.commentDate + '</small>';
+	                    html += '    </div>';
+	                    html += '    <p class="card-text">' + comment.commentContent + '</p>';
+	                    html += '    <div class="text-end">';
+	                    html += '      <button type="button" class="btn btn-sm btn-outline-primary btn-edit-comment" data-comment-id="' + comment.commentId + '">수정</button>';
+	                    html += '      <button type="button" class="btn btn-sm btn-outline-danger btn-delete-comment" data-comment-id="' + comment.commentId + '">삭제</button>';
+	                    html += '    </div>';
+	                    html += '  </div>';
+	                    html += '</div>';
+	                }
+	            }
+	            $('#commentList').html(html); // HTML 삽입
+	        },
+	        error: function(error) {
+	            console.error("Error:", error);
+	        }
+	    });
+	}
+   
+	// 댓글 등록
+	$('#btn_comment_submit').on('click', function () {
+	    const content = $('#commentContent').val();
 	    
-	 	// 댓글 등록
-        $('#btn_comment_submit').on('click', function () {
-            const content = $('#commentContent').val();
-            
-            if(!content.trim()) {
-                alert("댓글 내용을 입력하세요.");
-                return;
-            }
-            
-            if(confirm("정말 등록하시겠습니까?")) {
-                $.ajax({
-                    type: "POST",
-                    url: "insertComment.do",
-                    data: $('#commentForm').serialize(),
-                    success: function(response) {
-                        if(response === 'success') {
-                            alert("댓글이 등록되었습니다.");
-                            $('#commentContent').val('');
-                            refreshCommentList();
-                        } else if(response === 'login_required') {
-                            alert("로그인이 필요한 기능입니다.");
-                            window.location.href = "loginPage.do";
-                        } else {
-                            alert("댓글 등록에 실패했습니다.");
-                        }
-                    },
-                    error: function(error) {
-                        console.error("Error:", error);
-                        alert("댓글 등록 중 오류가 발생했습니다.");
-                    }
-                });
-            }
-        });
+	    if(!content.trim()) {
+	        alert("댓글 내용을 입력하세요.");
+	        return;
+	    }
 	    
-     	// 댓글 수정 - 권한 검사 추가
-        $(document).on('click', '.btn-edit-comment', function() {
-            const commentId = $(this).data('comment-id');
-            const commentText = $(this).closest('.card-body').find('.card-text').text();
-            
-            const newContent = prompt("댓글을 수정해주세요:", commentText);
-            
-            if(newContent !== null && newContent.trim() !== '') {
-                $.ajax({
-                    type: "POST",
-                    url: "updateComment.do",
-                    data: {
-                        commentId: commentId,
-                        commentContent: newContent
-                    },
-                    success: function(response) {
-                        if(response === 'success') {
-                            alert("댓글이 수정되었습니다.");
-                            refreshCommentList();
-                        } else if(response === 'login_required') {
-                            alert("로그인이 필요한 기능입니다.");
-                            window.location.href = "loginPage.do";
-                        } else if(response === 'unauthorized') {
-                            alert("댓글 수정 권한이 없습니다.");
-                        } else {
-                            alert("댓글 수정에 실패했습니다.");
-                        }
-                    },
-                    error: function(error) {
-                        console.error("Error:", error);
-                        alert("댓글 수정 중 오류가 발생했습니다.");
-                    }
-                });
-            }
-        });
+	    if(confirm("정말 등록하시겠습니까?")) {
+	        $.ajax({
+	            type: "POST",
+	            url: "insertComment.do",
+	            data: $('#commentForm').serialize(),
+	            success: function(response) {
+	                if(response === 'success') {
+	                    alert("댓글이 등록되었습니다.");
+	                    $('#commentContent').val('');
+	                    refreshCommentList();
+	                } else if(response === 'login_required') {
+	                    alert("로그인이 필요한 기능입니다.");
+	                    window.location.href = "loginPage.do";
+	                } else {
+	                    alert("댓글 등록에 실패했습니다.");
+	                }
+	            },
+	            error: function(error) {
+	                console.error("Error:", error);
+	                alert("댓글 등록 중 오류가 발생했습니다.");
+	            }
+	        });
+	    }
+	});
+   
+   	// 댓글 수정 - 권한 검사 추가
+	$(document).on('click', '.btn-edit-comment', function() {
+	    const commentId = $(this).data('comment-id');
+	    const commentText = $(this).closest('.card-body').find('.card-text').text();
 	    
-     	// 댓글 삭제 - 권한 검사 추가
-        $(document).on('click', '.btn-delete-comment', function() {
-            const commentId = $(this).data('comment-id');
-            
-            if(confirm("정말 이 댓글을 삭제하시겠습니까?")) {
-                $.ajax({
-                    type: "POST",
-                    url: "deleteComment.do",
-                    data: { commentId: commentId },
-                    success: function(response) {
-                        if(response === 'success') {
-                            alert("댓글이 삭제되었습니다.");
-                            refreshCommentList();
-                        } else if(response === 'login_required') {
-                            alert("로그인이 필요한 기능입니다.");
-                            window.location.href = "loginPage.do";
-                        } else if(response === 'unauthorized') {
-                            alert("댓글 삭제 권한이 없습니다.");
-                        } else {
-                            alert("댓글 삭제에 실패했습니다.");
-                        }
-                    },
-                    error: function(error) {
-                        console.error("Error:", error);
-                        alert("댓글 삭제 중 오류가 발생했습니다.");
-                    }
-                });
-            }
-        });
-    </script>
-</body>
+	    const newContent = prompt("댓글을 수정해주세요:", commentText);
+	    
+	    if(newContent !== null && newContent.trim() !== '') {
+	        $.ajax({
+	            type: "POST",
+	            url: "updateComment.do",
+	            data: {
+	                commentId: commentId,
+	                commentContent: newContent
+	            },
+	            success: function(response) {
+	                if(response === 'success') {
+	                    alert("댓글이 수정되었습니다.");
+	                    refreshCommentList();
+	                } else if(response === 'login_required') {
+	                    alert("로그인이 필요한 기능입니다.");
+	                    window.location.href = "loginPage.do";
+	                } else if(response === 'unauthorized') {
+	                    alert("댓글 수정 권한이 없습니다.");
+	                } else {
+	                    alert("댓글 수정에 실패했습니다.");
+	                }
+	            },
+	            error: function(error) {
+	                console.error("Error:", error);
+	                alert("댓글 수정 중 오류가 발생했습니다.");
+	            }
+	        });
+	    }
+	});
+   
+   	// 댓글 삭제 - 권한 검사 추가
+	$(document).on('click', '.btn-delete-comment', function() {
+	    const commentId = $(this).data('comment-id');
+	    
+	    if(confirm("정말 이 댓글을 삭제하시겠습니까?")) {
+	        $.ajax({
+	            type: "POST",
+	            url: "deleteComment.do",
+	            data: { commentId: commentId },
+	            success: function(response) {
+	                if(response === 'success') {
+	                    alert("댓글이 삭제되었습니다.");
+	                    refreshCommentList();
+	                } else if(response === 'login_required') {
+	                    alert("로그인이 필요한 기능입니다.");
+	                    window.location.href = "loginPage.do";
+	                } else if(response === 'unauthorized') {
+	                    alert("댓글 삭제 권한이 없습니다.");
+	                } else {
+	                    alert("댓글 삭제에 실패했습니다.");
+	                }
+	            },
+	            error: function(error) {
+	                console.error("Error:", error);
+	                alert("댓글 삭제 중 오류가 발생했습니다.");
+	            }
+	        });
+	    }
+	});
+</script>
 </html>

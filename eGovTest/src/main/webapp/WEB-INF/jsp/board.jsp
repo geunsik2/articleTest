@@ -11,7 +11,7 @@
     <script src="js/jquery-3.7.1.min.js"></script>
     
     <!-- Bootstrap CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">    
+    <link href="css/bootstrap.min.css" rel="stylesheet">
     
     <!-- Bootstrap JS -->
     <script src="js/bootstrap.bundle.min.js"></script>

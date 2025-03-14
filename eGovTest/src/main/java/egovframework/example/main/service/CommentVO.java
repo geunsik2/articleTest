@@ -46,6 +46,16 @@ public class CommentVO {
 	public void setCommentDate(String commentDate) {
 		this.commentDate = commentDate;
 	}
-    
 	
+	@Override
+    public String toString() {
+        return "CommentVO{" +
+                "commentId=" + commentId +
+                ", boardId=" + boardId +
+                ", commentContent='" + commentContent + '\'' +
+                ", commentName='" + commentName + '\'' +
+                ", commentDate='" + commentDate + '\'' +
+                ", userId='" + userId + '\'' +
+                '}';
+    }
 }

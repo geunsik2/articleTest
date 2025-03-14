@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import egovframework.example.main.service.CommentService;
@@ -28,7 +27,15 @@ public class CommentController {
     @RequestMapping("/getCommentList.do")
     @ResponseBody
     public List<CommentVO> getCommentList(@ModelAttribute("commentVO") CommentVO commentVO) throws Exception {
-        return commentService.selectCommentList(commentVO.getBoardId());
+
+        List<CommentVO> commentList = commentService.selectCommentList(commentVO.getBoardId());
+        
+     // commentList의 내용을 로그로 출력
+        for (CommentVO comment : commentList) {
+            logger.info("Comment: {}", comment.toString());
+        }
+
+        return commentList;
     }
 
     // 댓글 등록
@@ -44,6 +51,7 @@ public class CommentController {
             
             // 작성자 정보 설정
             commentVO.setUserId(loginUser.getUserId());
+            
             // 이름이 지정되지 않은 경우 회원 이름으로 설정
             if (commentVO.getCommentName() == null || commentVO.getCommentName().trim().isEmpty()) {
                 commentVO.setCommentName(loginUser.getUserName());

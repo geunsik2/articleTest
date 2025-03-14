@@ -20,7 +20,7 @@
 	<!-- 댓글 등록 -->
 	<insert id="insertComment" parameterType="commentVO">
 		INSERT INTO comment(boardId, commentContent, commentName, commentDate, userId)
-		VALUES (#{boardId}, #{commentContent}, #{commentName}, now(), #{userId}
+		VALUES (#{boardId}, #{commentContent}, #{commentName}, now(), #{userId})
 	</insert>
     
     <!-- 댓글 수정 -->
